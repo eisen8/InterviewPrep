@@ -1,2 +1,2 @@
-# leetcode
-Solutions to leetcode problems by eisen
+# InterviewPrep
+My personal solutions to various software engineering interview prep questions.

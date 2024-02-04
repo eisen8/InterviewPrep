@@ -1,2 +1,7 @@
-**/.idea/
+# Output directories
 **/out/
+
+
+# IntelliJ
+**/.idea/
+*.iml

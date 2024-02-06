@@ -13,8 +13,8 @@ public class P_0027_Tests {
 
         int result  = CUT.removeElement(nums, val);
 
-        Assert.assertEquals(2, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, 2));
+        Assert.assertEquals(expected.length, result);
+        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -26,8 +26,8 @@ public class P_0027_Tests {
 
         int result  = CUT.removeElement(nums, val);
 
-        Assert.assertEquals(5, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, 5));
+        Assert.assertEquals(expected.length, result);
+        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -61,8 +61,8 @@ public class P_0027_Tests {
 
         int result  = CUT.removeElement2(nums, val);
 
-        Assert.assertEquals(2, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, 2));
+        Assert.assertEquals(expected.length, result);
+        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -74,8 +74,8 @@ public class P_0027_Tests {
 
         int result  = CUT.removeElement2(nums, val);
 
-        Assert.assertEquals(5, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, 5));
+        Assert.assertEquals(expected.length, result);
+        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test

@@ -7,15 +7,15 @@ public class P_0027 {
      * This solution uses 1 pointer and as we go through the array we swap over the numbers that don't match the value.
      */
     public int removeElement(int[] nums, int val) {
-        int ind = 0;
+        int j = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
-                nums[ind] = nums[i];
-                ind++;
+                nums[j] = nums[i];
+                j++;
             }
         }
 
-        return ind;
+        return j;
     }
 
     /**

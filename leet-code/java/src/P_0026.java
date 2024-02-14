@@ -1,3 +1,5 @@
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 // 26. Remove Duplicates from Sorted Array --- https://leetcode.com/problems/remove-duplicates-from-sorted-array/description
 // See bottom for problem statement
@@ -20,6 +22,27 @@ public class P_0026 {
         }
 
         return j;
+    }
+
+    /**
+     * This solution adds nums into a set (removing duplicates) and then copies the set back over.
+     */
+    public int removeDuplicates2(int[] nums) {
+        if (nums == null) return 0;
+        if (nums.length < 2) return nums.length;
+
+        Set<Integer> nonDup = new LinkedHashSet<>();
+        for (int num : nums) { // Add to set
+            nonDup.add(num);
+        }
+
+        int index = 0;
+        for (Integer num : nonDup) { // Copy set back over
+            nums[index] = num;
+            index++;
+        }
+
+        return nonDup.size();
     }
 }
 

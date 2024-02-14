@@ -6,6 +6,8 @@ public class P_0080 {
     /**
      * This solution uses 1 pointer to keep track of where the next nonduplicate should be. As we go through the array
      * we find the next nonduplicate (using lookback) and swap it to where the pointer is.
+     * Time complexity: O(n)
+     * Space complexity: O(1)
      */
     public int removeDuplicates(int[] nums) {
         if (nums == null) return 0;

@@ -5,6 +5,8 @@ public class P_0027 {
 
     /**
      * This solution uses 1 pointer and as we go through the array we swap over the numbers that don't match the value.
+     * Time complexity: O(n)
+     * Space complexity: O(1)
      */
     public int removeElement(int[] nums, int val) {
         int j = 0;
@@ -20,7 +22,9 @@ public class P_0027 {
 
     /**
      * This solution has two pointers (1 at the start and 1 at the end). We move the ints from the end to fill in any
-     * val matches at the start.
+     * val matches ("holes") at the start.
+     * Time complexity: O(n)
+     * Space complexity: O(1)
      */
     public int removeElement2(int[] nums, int val) {
         int startInd = 0;

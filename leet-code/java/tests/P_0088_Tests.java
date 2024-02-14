@@ -5,9 +5,9 @@ public class P_0088_Tests {
     @Test
     public void merge_e1() {
         P_0088 CUT = new P_0088();
-        int[] n1 = {1, 2, 3, 0, 0, 0};
-        int[] n2 = {2, 5, 6};
-        int[] expected = {1, 2, 2, 3, 5, 6};
+        int[] n1 = {1,2,3,0,0,0};
+        int[] n2 = {2,5,6};
+        int[] expected = {1,2,2,3,5,6};
 
         CUT.merge(n1, 3, n2, 3);
 

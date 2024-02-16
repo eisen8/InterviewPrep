@@ -4,15 +4,15 @@ import java.util.*;
 
 /**
  * Different implementations of a Fibonacci number calculator. For this implementation, f(0) through f(4) are 0, 1, 1, 2, 3.
- * Any n less than 1 results in 0 (including negative n). Older definitions of Fibonnaci often omit f(0) or start with
- * f(1) = 0. So this implementation might not exactly match other ones using the different definition.
+ * Any n less than 1 results in 0 (including negative n). Older definitions of Fibonacci often omit f(0) or start with
+ * f(1) = 0. So this implementation might not exactly match other ones using a different definition.
  */
 public class Fibonacci {
 
     /**
      * A slow recursive implementation of fibonacci numbers
-     * @param n The Nth instance of misc.Fibonacci number to return
-     * @return The misc.Fibonacci number at N
+     * @param n The Nth instance of the fibonacci number to return
+     * @return The Fibonacci number at N
      */
     public int recursiveFib(int n) {
         if (n <= 0) { return 0; }
@@ -56,7 +56,7 @@ public class Fibonacci {
     }
 
     /**
-     * Iteratively calculates the fib using a stack instead of recursively.
+     * Iteratively calculates the fib using a stack.
      */
     public int iterativeStackFib(int n) {
         if (n <= 0) { return 0; }
@@ -77,7 +77,7 @@ public class Fibonacci {
     }
 
     /**
-     * Another implementation using a stack. This time going "backwards".
+     * Another implementation using a stack. This time starting at n and going "backwards".
      */
     public int iterativeStackFib2(int n) {
         if (n <= 0) { return 0; }

@@ -62,10 +62,10 @@ public class Fibonacci {
         if (n <= 0) { return 0; }
 
         Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(1);
+        stack.push(1); //f(1)
+        stack.push(1); //f(2)
 
-        for (int i = 3; i <= n; i++) {
+        for (int i = 3; i <= n; i++) { //f(3+)
             int prev1 = stack.pop();
             int prev2 = stack.pop();
             int next = prev1 + prev2;

@@ -1,7 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class P_0383_Tests {
     @Test
@@ -12,7 +10,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct(ran, mag);
 
-        Assert.assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -23,7 +21,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct(ran, mag);
 
-        Assert.assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -34,7 +32,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct(ran, mag);
 
-        Assert.assertTrue(result);
+        Assertions.assertTrue(result);
     }
 
     @Test
@@ -45,7 +43,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct2(ran, mag);
 
-        Assert.assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -56,7 +54,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct2(ran, mag);
 
-        Assert.assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -67,7 +65,7 @@ public class P_0383_Tests {
 
         boolean result  = CUT.canConstruct2(ran, mag);
 
-        Assert.assertTrue(result);
+        Assertions.assertTrue(result);
     }
 
 }

@@ -1,7 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class P_0169_Tests {
     @Test
@@ -12,7 +10,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -23,7 +21,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -34,7 +32,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -45,7 +43,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -56,7 +54,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement2(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -67,7 +65,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement2(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -78,7 +76,7 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement2(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -89,6 +87,6 @@ public class P_0169_Tests {
 
         int result  = CUT.majorityElement2(nums);
 
-        Assert.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result);
     }
 }

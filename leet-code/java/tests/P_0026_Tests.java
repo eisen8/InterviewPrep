@@ -1,5 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
@@ -12,8 +12,8 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(nums);
 
-        Assert.assertEquals(2, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
+        Assertions.assertEquals(2, result);
+        Assertions.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -24,8 +24,8 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(nums);
 
-        Assert.assertEquals(5, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
+        Assertions.assertEquals(5, result);
+        Assertions.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(nums);
 
-        Assert.assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(null);
 
-        Assert.assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(nums);
 
-        Assert.assertEquals(1, result);
+        Assertions.assertEquals(1, result);
     }
 
     @Test
@@ -65,8 +65,8 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates(nums);
 
-        Assert.assertEquals(expected.length, result);
-        Assert.assertArrayEquals(expected, nums);
+        Assertions.assertEquals(expected.length, result);
+        Assertions.assertArrayEquals(expected, nums);
     }
 
     @Test
@@ -77,8 +77,8 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(nums);
 
-        Assert.assertEquals(2, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
+        Assertions.assertEquals(2, result);
+        Assertions.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -89,8 +89,8 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(nums);
 
-        Assert.assertEquals(5, result);
-        Assert.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
+        Assertions.assertEquals(5, result);
+        Assertions.assertArrayEquals(expected, Arrays.copyOfRange(nums, 0, expected.length));
     }
 
     @Test
@@ -100,7 +100,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(nums);
 
-        Assert.assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(null);
 
-        Assert.assertEquals(0, result);
+        Assertions.assertEquals(0, result);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(nums);
 
-        Assert.assertEquals(1, result);
+        Assertions.assertEquals(1, result);
     }
 
     @Test
@@ -130,7 +130,7 @@ public class P_0026_Tests {
 
         int result  = CUT.removeDuplicates2(nums);
 
-        Assert.assertEquals(expected.length, result);
-        Assert.assertArrayEquals(expected, nums);
+        Assertions.assertEquals(expected.length, result);
+        Assertions.assertArrayEquals(expected, nums);
     }
 }

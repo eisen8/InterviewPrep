@@ -1,5 +1,5 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class P_0088_Tests {
     @Test
@@ -11,7 +11,7 @@ public class P_0088_Tests {
 
         CUT.merge(n1, 3, n2, 3);
 
-        Assert.assertArrayEquals(expected, n1);
+        Assertions.assertArrayEquals(expected, n1);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class P_0088_Tests {
 
         CUT.merge(n1, 1, n2, 0);
 
-        Assert.assertArrayEquals(expected, n1);
+        Assertions.assertArrayEquals(expected, n1);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class P_0088_Tests {
 
         CUT.merge(n1, 0, n2, 1);
 
-        Assert.assertArrayEquals(expected, n1);
+        Assertions.assertArrayEquals(expected, n1);
     }
 
 /*  Example 1:

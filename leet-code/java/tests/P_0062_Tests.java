@@ -9,10 +9,10 @@ public class P_0062_Tests {
     /**
      * Parameters for basic tests.
      */
-    private static Stream<Arguments> basicParameters() {
-        return Stream.of(
-                Arguments.of(3, 7, 28), // (m, n, expected)
-                Arguments.of(3, 2, 3),
+    private static Stream<Arguments> basicTestParameters() {
+        return Stream.of( // (m, n, expected)
+                Arguments.of(3, 7, 28), // e1
+                Arguments.of(3, 2, 3), // e2
                 Arguments.of(1, 1, 1),
                 Arguments.of(0, 1, 0),
                 Arguments.of(0, 0, 0),
@@ -22,7 +22,7 @@ public class P_0062_Tests {
     }
 
     @ParameterizedTest
-    @MethodSource("basicParameters")
+    @MethodSource("basicTestParameters")
     public void uniquePaths_BasicParameters(int m, int n, int expected) {
         P_0062 CUT = new P_0062();
 
@@ -32,7 +32,7 @@ public class P_0062_Tests {
     }
 
     @ParameterizedTest
-    @MethodSource("basicParameters")
+    @MethodSource("basicTestParameters")
     public void uniquePathsWithCache_BasicParameters(int m, int n, int expected) {
         P_0062 CUT = new P_0062();
 

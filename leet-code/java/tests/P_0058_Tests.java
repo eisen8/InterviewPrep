@@ -16,9 +16,11 @@ public class P_0058_Tests {
                 Arguments.of("Hello World", 5), // e1
                 Arguments.of("   fly me   to   the moon  ", 4), // e2
                 Arguments.of("luffy is still joyboy", 6), // e3
-                Arguments.of("     ", 0), //
-                Arguments.of("", 0),  //
-                Arguments.of(null, 0)  //
+                Arguments.of("Boy", 3), // Single word
+                Arguments.of("  Boy  ", 3), // Single word with white space
+                Arguments.of("     ", 0), // all white space
+                Arguments.of("", 0),  // empty
+                Arguments.of(null, 0)  // null
         );
     }
 

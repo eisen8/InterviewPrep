@@ -1,7 +1,5 @@
 package lists;
 
-import java.util.Arrays;
-
 /**
  * An array list that automatically resizes.
  * Warnings: Not thread-safe.
@@ -11,7 +9,7 @@ public class ArrayList<T> implements IList<T> {
     private T[] _array; // internal array
     private int _numElements = 0; // num of current elements in array
 
-    private int _maxSize; // max size of current array (will resize if maxSize is reached)
+    private int _initialSize;
 
     public ArrayList() {
         this(100);
@@ -23,7 +21,7 @@ public class ArrayList<T> implements IList<T> {
         }
 
         _array = (T[]) new Object[initialSize];
-        _maxSize = initialSize;
+        _initialSize = initialSize;
     }
 
     /**
@@ -48,7 +46,7 @@ public class ArrayList<T> implements IList<T> {
     @Override
     public void clear() {
 
-        _array = (T[]) new Object[_maxSize];
+        _array = (T[]) new Object[_initialSize];
         _numElements = 0;
     }
 
@@ -100,7 +98,7 @@ public class ArrayList<T> implements IList<T> {
      */
     @Override
     public void add(T element) {
-        if (_array.length == _maxSize) {
+        if (_numElements == _array.length) {
             resize();
         }
 
@@ -166,8 +164,7 @@ public class ArrayList<T> implements IList<T> {
      * Resizes the internal array
      */
     private void resize() {
-        _maxSize *= 2;
-        T[] newArray = (T[]) new Object[_maxSize];
+        T[] newArray = (T[]) new Object[_array.length*2];
         System.arraycopy(_array, 0, newArray, 0, _numElements);
         _array = newArray;
     }

@@ -19,6 +19,30 @@ public class TrieTests {
     }
 
     @Test
+    public void Insert_DuplicateWords_OnlyCountOnce() {
+        Trie CUT = new Trie();
+
+        CUT.insert("a");
+        CUT.insert("a");
+        CUT.insert("a");
+        CUT.insert("apple");
+        CUT.insert("applied");
+        CUT.insert("application");
+        CUT.insert("a");
+        CUT.insert("a");
+        CUT.insert("a");
+
+        List<String> result = CUT.wordsWithPrefix("a");
+
+        assertTrue(CUT.search("a"));
+        assertEquals(4, result.size());
+        assertTrue(result.contains("a"));
+        assertTrue(result.contains("apple"));
+        assertTrue(result.contains("application"));
+        assertTrue(result.contains("applied"));
+    }
+
+    @Test
     public void Search_SeveralWordsThatExist_ReturnsTrue() {
         Trie CUT = new Trie();
         CUT.insert("a");
@@ -48,41 +72,41 @@ public class TrieTests {
     }
 
     @Test
-    public void startsWith_NoPrefixs_ReturnsEmpty() {
+    public void wordsWithPrefix_NoPrefixs_ReturnsEmpty() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");
         CUT.insert("applied");
         CUT.insert("application");
 
-        assertTrue(CUT.startsWith("b").isEmpty());
-        assertTrue(CUT.startsWith("applieds").isEmpty());
-        assertTrue(CUT.startsWith("zapple").isEmpty());
+        assertTrue(CUT.wordsWithPrefix("b").isEmpty());
+        assertTrue(CUT.wordsWithPrefix("applieds").isEmpty());
+        assertTrue(CUT.wordsWithPrefix("zapple").isEmpty());
     }
 
     @Test
-    public void startsWith_JustTheWord_ReturnsTheWord() {
+    public void wordsWithPrefix_JustTheWord_ReturnsTheWord() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");
         CUT.insert("applied");
         CUT.insert("application");
 
-        List<String> result = CUT.startsWith("application");
+        List<String> result = CUT.wordsWithPrefix("application");
 
         assertEquals(1, result.size());
         assertEquals("application", result.getFirst());
     }
 
     @Test
-    public void startsWith_APrefixThatMatchesAll_ReturnsAllTheWords() {
+    public void wordsWithPrefix_APrefixThatMatchesAll_ReturnsAllTheWords() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");
         CUT.insert("applied");
         CUT.insert("application");
 
-        List<String> result = CUT.startsWith("a");
+        List<String> result = CUT.wordsWithPrefix("a");
 
         assertEquals(4, result.size());
         assertTrue(result.contains("a"));
@@ -92,18 +116,44 @@ public class TrieTests {
     }
 
     @Test
-    public void startsWith_APrefixThatMatchesSome_ReturnsAllTheWordsMatching() {
+    public void wordsWithPrefix_APrefixThatMatchesSome_ReturnsAllTheWordsMatching() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");
         CUT.insert("applied");
         CUT.insert("application");
 
-        List<String> result = CUT.startsWith("app");
+        List<String> result = CUT.wordsWithPrefix("app");
 
         assertEquals(3, result.size());
         assertTrue(result.contains("apple"));
         assertTrue(result.contains("application"));
         assertTrue(result.contains("applied"));
+    }
+
+    @Test
+    public void wordsWithPrefix_MaxNumResults_ReturnsOnlySomeResults() {
+        Trie CUT = new Trie();
+        CUT.insert("a");
+        CUT.insert("apple");
+        CUT.insert("applied");
+        CUT.insert("application");
+
+        List<String> result = CUT.wordsWithPrefix("app", 2);
+
+        assertEquals(2, result.size());
+    }
+
+    @Test
+    public void wordsWithPrefix_MaxOneResult_ReturnsOneResult() {
+        Trie CUT = new Trie();
+        CUT.insert("a");
+        CUT.insert("apple");
+        CUT.insert("applied");
+        CUT.insert("application");
+
+        List<String> result = CUT.wordsWithPrefix("a", 1);
+
+        assertEquals(1, result.size());
     }
 }

@@ -1,16 +1,14 @@
 package trees;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Trie {
 
     private final TrieNode _root;
 
     public Trie() {
-        _root = new TrieNode(' ');
+        _root = new TrieNode('^', null);
     }
 
     /**
@@ -23,13 +21,18 @@ public class Trie {
         }
 
         TrieNode currNode = _root;
-        for (Character c : word.toLowerCase().toCharArray()) {
+        for (char c : word.toLowerCase().toCharArray()) {
             if (!isValidCharacter(c)) {
                 throw new IllegalArgumentException(String.format("Invalid character '%c'", c));
             }
 
-            currNode.children.computeIfAbsent(c, TrieNode::new);
-            currNode = currNode.children.get(c);
+            int index = getChildIndex(c);
+
+            if (currNode.children[index] == null) {
+                currNode.children[index] = new TrieNode(c, currNode);
+            }
+
+            currNode = currNode.children[index];
         }
 
         currNode.isWord = true;
@@ -47,12 +50,12 @@ public class Trie {
 
 
         TrieNode currNode = _root;
-        for (Character c : word.toLowerCase().toCharArray()) {
+        for (char c : word.toLowerCase().toCharArray()) {
             if (!isValidCharacter(c)) {
                 throw new IllegalArgumentException(String.format("Invalid character '%c'", c));
             }
 
-            currNode = currNode.children.get(c);
+            currNode = currNode.children[getChildIndex(c)];
             if (currNode == null) {
                 return false;
             }
@@ -67,25 +70,35 @@ public class Trie {
      * @param prefix The prefix.
      * @return All words that start with the prefix.
      */
-    public List<String> startsWith(String prefix) {
+    public List<String> wordsWithPrefix(String prefix) {
+        return wordsWithPrefix(prefix, Integer.MAX_VALUE);
+    }
+
+    /**
+     * Returns all words in the trie that start with the prefix (including if the prefix is a word).
+     * @param prefix The prefix.
+     * @param maxNumResults The maximum number of results
+     * @return All words that start with the prefix.
+     */
+    public List<String> wordsWithPrefix(String prefix, int maxNumResults) {
         if (prefix == null || prefix.isEmpty()) {
             throw new IllegalArgumentException("Prefix cannot be null");
         }
 
         List<String> matches = new ArrayList<>();
         TrieNode currNode = _root;
-        for (Character c : prefix.toLowerCase().toCharArray()) {
+        for (char c : prefix.toLowerCase().toCharArray()) {
             if (!isValidCharacter(c)) {
                 throw new IllegalArgumentException(String.format("Invalid character %c", c));
             }
 
-            currNode = currNode.children.get(c);
+            currNode = currNode.children[getChildIndex(c)];
             if (currNode == null) {
                 return matches; // no prefix matches
             }
         }
 
-        matches.addAll(getAllSubWords(currNode, prefix));
+        matches.addAll(getAllSubWords(currNode, maxNumResults));
 
         return matches;
     }
@@ -93,21 +106,47 @@ public class Trie {
     /**
      * Gets all words below the currentNode in the trie.
      */
-    private List<String> getAllSubWords(TrieNode currNode, String currString) {
+    private List<String> getAllSubWords(TrieNode currNode, int maxNumResults) {
         List<String> allSubStrings = new ArrayList<>();
         if (currNode.isWord) {
-            allSubStrings.add(currString);
+            allSubStrings.add(getWord(currNode));
+            maxNumResults--;
         }
 
-        for (Map.Entry<Character, TrieNode> child : currNode.children.entrySet()) {
-            allSubStrings.addAll(getAllSubWords(child.getValue(), currString + child.getKey()));
+        for (TrieNode child : currNode.children) {
+            if (child == null) {
+                continue;
+            }
+
+            if (maxNumResults <= 0) {
+                return allSubStrings;
+            }
+
+            List<String> subStrings = getAllSubWords(child, maxNumResults);
+            allSubStrings.addAll(subStrings);
+            maxNumResults -= subStrings.size();
         }
 
         return allSubStrings;
     }
 
     /**
-     * Checks if the character is valid. Only allow english characters and hyphens.
+     * Retrieves the full string at a given TrieNode
+     */
+    private String getWord(TrieNode t) {
+        TrieNode currNode = t;
+        StringBuilder sb = new StringBuilder();
+        while (currNode != _root) {
+            sb.append(currNode.nodeChar);
+            currNode = currNode.parent;
+        }
+
+        return sb.reverse().toString();
+    }
+
+
+    /**
+     * Checks if the character is valid. We only allow english characters and hyphens.
      */
     private boolean isValidCharacter(char c) {
         if (c >= 'a' && c <= 'z') {
@@ -119,19 +158,35 @@ public class Trie {
         return false;
     }
 
+    private static final int NUM_VALID_CHARS = 27;
+
+    private int getChildIndex(char c) {
+        if (c == '-') { return 26; }
+
+        return c - 'a';
+    }
+
 
     /**
      * A node in the trie
      */
     private static class TrieNode {
         public char nodeChar;
-        public Map<Character, TrieNode> children;
+
+        /**
+         * Use an array instead of hash map to avoid costly hashing. We also save space if there are a large
+         * number of words as the default hashmap uses numbers of buckets to a power of 2 (min 16) with a load factor
+         * of 0.75 (i.e. 16 if less than 12 mappings, 32 if less than 24, and 64 if more than 24.
+         */
+        public TrieNode[] children;
+        public TrieNode parent;
         public boolean isWord;
 
-        public TrieNode(Character c) {
+        public TrieNode(char c, TrieNode parent) {
             nodeChar = c;
-            children = new HashMap<>();
+            children = new TrieNode[NUM_VALID_CHARS];
             isWord = false;
+            this.parent = parent;
         }
     }
 }

@@ -2,6 +2,7 @@ package trees;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Trie {
 
@@ -85,6 +86,7 @@ public class Trie {
             throw new IllegalArgumentException("Prefix cannot be null");
         }
 
+        // Traverse to the prefix
         List<String> matches = new ArrayList<>();
         TrieNode currNode = _root;
         for (char c : prefix.toLowerCase().toCharArray()) {
@@ -94,10 +96,11 @@ public class Trie {
 
             currNode = currNode.children[getChildIndex(c)];
             if (currNode == null) {
-                return matches; // no prefix matches
+                return matches; // prefix doesn't exist, no matches
             }
         }
 
+        // Get all subwords under the prefix
         matches.addAll(getAllSubWords(currNode, maxNumResults));
 
         return matches;
@@ -106,28 +109,28 @@ public class Trie {
     /**
      * Gets all words below the currentNode in the trie.
      */
-    private List<String> getAllSubWords(TrieNode currNode, int maxNumResults) {
-        List<String> allSubStrings = new ArrayList<>();
-        if (currNode.isWord) {
-            allSubStrings.add(getWord(currNode));
-            maxNumResults--;
-        }
+    private List<String> getAllSubWords(TrieNode node, int maxNumResults) {
+        List<String> words = new ArrayList<>();
+        Stack<TrieNode> stack = new Stack<>();
+        stack.push(node);
 
-        for (TrieNode child : currNode.children) {
-            if (child == null) {
-                continue;
+        while (!stack.isEmpty() && maxNumResults > 0) {
+            TrieNode currNode = stack.pop();
+            if (currNode.isWord) {
+                words.add(getWord(currNode));
+                maxNumResults--;
             }
 
-            if (maxNumResults <= 0) {
-                return allSubStrings;
-            }
+            for (TrieNode child : currNode.children) {
+                if (child == null) {
+                    continue;
+                }
 
-            List<String> subStrings = getAllSubWords(child, maxNumResults);
-            allSubStrings.addAll(subStrings);
-            maxNumResults -= subStrings.size();
+                stack.push(child);
+            }
         }
 
-        return allSubStrings;
+        return words;
     }
 
     /**

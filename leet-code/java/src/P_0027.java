@@ -1,4 +1,3 @@
-
 // 27. Remove Element --- https://leetcode.com/problems/remove-element/description
 // See bottom for problem statement
 public class P_0027 {

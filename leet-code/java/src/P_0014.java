@@ -1,7 +1,3 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 // 14. Longest Common Prefix --- https://leetcode.com/problems/longest-common-prefi
 // See bottom for problem statement
 public class P_0014 {

@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 // 9 Palindrome Number --- https://leetcode.com/problems/palindrome-number/description
 // See bottom for problem statement

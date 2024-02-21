@@ -1,4 +1,4 @@
-package trees;
+package data_structures.trees;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ public class TrieLargeDictionaryTests {
     public static void constructTrie() throws IOException {
         trie = new Trie();
         String myCurrentDir = System.getProperty("user.dir");
-        Path path = FileSystems.getDefault().getPath(myCurrentDir + "\\tests\\test-data\\words\\english_words.txt");
+        Path path = FileSystems.getDefault().getPath(myCurrentDir + "\\tests\\data_structures\\test-data\\words\\english_words.txt");
         List<String> words = Files.readAllLines(path);
         for (String word : words) {
             trie.insert(word);

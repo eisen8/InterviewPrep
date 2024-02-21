@@ -1,4 +1,4 @@
-package lists;
+package data_structures.lists;
 
 /**
  * A simplified list interface of the most basic operations

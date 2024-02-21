@@ -1,11 +1,11 @@
-package trees;
+package data_structures.trees;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import utilities.ArrayUtils;
+import data_structures.utilities.ArrayUtils;
 
 import java.util.stream.Stream;
 

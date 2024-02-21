@@ -1,4 +1,4 @@
-package lists;
+package data_structures.lists;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

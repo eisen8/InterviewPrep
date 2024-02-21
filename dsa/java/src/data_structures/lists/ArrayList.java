@@ -1,4 +1,4 @@
-package lists;
+package data_structures.lists;
 
 /**
  * An array list that automatically resizes.

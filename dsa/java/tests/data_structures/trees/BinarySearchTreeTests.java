@@ -1,4 +1,4 @@
-package trees;
+package data_structures.trees;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

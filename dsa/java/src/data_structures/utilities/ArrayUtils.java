@@ -1,4 +1,4 @@
-package utilities;
+package data_structures.utilities;
 
 public class ArrayUtils {
 

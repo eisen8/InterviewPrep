@@ -1,4 +1,4 @@
-package trees;
+package data_structures.trees;
 
 /**
  * A simple binary search tree (not self-balancing)

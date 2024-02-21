@@ -1,12 +1,17 @@
-import java.util.Map;
-
 // 12. Integer to Roman --- https://leetcode.com/problems/integer-to-roman
 // See bottom for problem statement
 public class P_0012 {
-    private final static String[] _ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-    private final static String[] _tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-    private final static String[] _hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-    private final static String[] _thousands = {"", "M", "MM", "MMM"};
+
+    /**
+     * Brute force arrays for solution 1. First index represents the place (0 = ones, 1 = tens, etc) and second
+     * represents the roman numeral value of corresponding digit.
+     */
+    private static final String[][] _toRomanNumerals = new String[][]{
+            {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}, //ones - 0, 1, 2, 3 ...
+            {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"}, //tens - 0, 10, 20, 30 ...
+            {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}, //hundreds - 0, 100, 200, 300 ...
+            {"", "M", "MM", "MMM", "", "", "", "", "", ""} // thousands - 0, 1000, 2000, 3000, unsupported
+    };
 
     /**
      * Use a lookup table to get each group of values
@@ -16,12 +21,21 @@ public class P_0012 {
         if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
 
         StringBuilder sb = new StringBuilder();
-        sb.append(_thousands[num / 1000]);
-        sb.append(_hundreds[num % 1000 / 100]);
-        sb.append(_tens[num % 100 / 10]);
-        sb.append(_ones[num % 10]);
+        // Note: Could turn this into a for loop
+        sb.append(_toRomanNumerals[3][num / 1000]);
+        sb.append(_toRomanNumerals[2][num % 1000 / 100]);
+        sb.append(_toRomanNumerals[1][num % 100 / 10]);
+        sb.append(_toRomanNumerals[0][num % 10]);
         return sb.toString();
     }
+
+    // Partial Brute force arrays for Solution 2: First array corresponds to the decimal place, 2nd gets the corresponding roman numeral
+    private static final String[][] _toRomanNumerals2 = new String[][]{
+            {"IX", "V", "IV", "I"}, //one places - 9, 5, 4, 1
+            {"XC", "L", "XL", "X"}, //tens - 90, 50, 40, 10
+            {"CM", "D", "CD", "C"}, //hundreds - 900, 500, 400, 100
+            {"", "", "", "M"} // thousands -Unsupported, Unsupported, Unsupported, 1000
+    };
 
     /**
      * Same as solution 3 below but refactored into a for loop for less repeated code.
@@ -31,15 +45,6 @@ public class P_0012 {
         if (num <= 0) { return ""; }
         if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
 
-
-        // First array corresponds to the decimal place, 2nd gets the corresponding roman numeral
-        String[][] _romanNumerals = new String[][]{
-                {"IX", "V", "IV", "I"}, //one places - 9, 5, 4, 1
-                {"XC", "L", "XL", "X"}, //tens - 90, 50, 40, 10
-                {"CM", "D", "CD", "C"}, //hundreds - 900, 500, 400, 1000
-                {"", "", "", "M"} // thousands -Unsupported, Unsupported, Unsupported, 1000
-        };
-
         StringBuilder sb = new StringBuilder();
         int currTotal = num;
 
@@ -47,16 +52,16 @@ public class P_0012 {
         for (int j = 3; j >= 0; j--) {
             int currentDigit = currTotal/tenToTheX(j); // extract the digit of the current decimal place
             if (currentDigit == 9) {
-                sb.append(_romanNumerals[j][0]);
+                sb.append(_toRomanNumerals2[j][0]);
             } else if (currentDigit == 4) {
-                sb.append(_romanNumerals[j][2]);
+                sb.append(_toRomanNumerals2[j][2]);
             } else {
                 if (currentDigit >= 5) {
-                    sb.append(_romanNumerals[j][1]);
+                    sb.append(_toRomanNumerals2[j][1]);
                 }
 
                 for (int i = 0; i < currentDigit % 5; i++) {
-                    sb.append(_romanNumerals[j][3]);
+                    sb.append(_toRomanNumerals2[j][3]);
                 }
             }
             currTotal -= tenToTheX(j)*currentDigit;
@@ -65,16 +70,16 @@ public class P_0012 {
         return sb.toString();
     }
 
+    /**
+     * Returns 10 to the power of X.
+     */
     private int tenToTheX(int x) {
         if (x < 0) {
             throw new IllegalArgumentException("X must be greater than 0");
         }
-        if (x == 0) {
-            return 1;
-        }
 
-        int total = 10;
-        for (int i = 1; i < x; i++) {
+        int total = 1;
+        for (int i = 0; i < x; i++) {
             total *= 10;
         }
         return total;

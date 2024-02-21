@@ -48,7 +48,7 @@ public class P_0012_Tests {
     public void intToRoman3_BasicParameters(int num, String expected) {
         P_0012 CUT = new P_0012();
 
-        String result  = CUT.intToRoman2(num);
+        String result  = CUT.intToRoman3(num);
 
         Assertions.assertEquals(expected, result);
     }

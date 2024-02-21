@@ -5,7 +5,7 @@ import java.util.Stack;
 // See bottom for problem statement
 public class P_0020 {
 
-    private final Map<Character, Character> _openCloseParenthesesMap = Map.of(
+    private static final Map<Character, Character> _openCloseParenthesesMap = Map.of(
         '(', ')', // open, close
             '[', ']',
         '{', '}'

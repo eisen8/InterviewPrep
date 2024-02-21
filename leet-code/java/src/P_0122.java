@@ -7,7 +7,7 @@ import java.util.Map;
 public class P_0122 {
 
     /**
-     * Always buy high and sell low.
+     * Always buy low and sell high.
      * Time complexity: O(n)
      * Space complexity: O(1)
      */
@@ -20,7 +20,7 @@ public class P_0122 {
         for (int i = 1; i< prices.length; i++) {
             int profit = prices[i] - prices[i-1];
             if (profit > 0) {
-                totalProfit += profit; // always buy high and sell low
+                totalProfit += profit; // always buy low and sell high
             }
         }
 

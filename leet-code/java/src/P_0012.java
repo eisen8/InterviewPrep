@@ -3,43 +3,103 @@ import java.util.Map;
 // 12. Integer to Roman --- https://leetcode.com/problems/integer-to-roman
 // See bottom for problem statement
 public class P_0012 {
-    private final static String[] _ones = {"","I","II","III","IV","V","VI","VII","VIII","IX"};
-    private final static String[] _tens = {"","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"};
-    private final static String[] _hundreds = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
-    private final static String[] _thousands = {"","M","MM","MMM"};
+    private final static String[] _ones = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    private final static String[] _tens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+    private final static String[] _hundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+    private final static String[] _thousands = {"", "M", "MM", "MMM"};
 
     /**
      * Use a lookup table to get each group of values
-     * Time complexity: O(1)
-     * Time complexity: O(1)
      */
     public String intToRoman(int num) {
+        if (num <= 0) { return ""; }
+        if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
+
         StringBuilder sb = new StringBuilder();
-        sb.append(_thousands[num/1000]);
-        sb.append(_hundreds[num%1000/100]);
-        sb.append(_tens[num%100/10]);
-        sb.append(_ones[num%10]);
+        sb.append(_thousands[num / 1000]);
+        sb.append(_hundreds[num % 1000 / 100]);
+        sb.append(_tens[num % 100 / 10]);
+        sb.append(_ones[num % 10]);
         return sb.toString();
     }
 
     /**
-     * Chop up the number 1 piece at a time and convert it to the corresponding roman numerals.
-     * Slightly less brute force than the above but much more difficult to read and much more code.
+     * Same as solution 3 below but refactored into a for loop for less repeated code.
+     * Chops up the number 1 piece at a time and converts it to the corresponding roman numerals.
      */
     public String intToRoman2(int num) {
         if (num <= 0) { return ""; }
+        if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
+
+
+        // First array corresponds to the decimal place, 2nd gets the corresponding roman numeral
+        String[][] _romanNumerals = new String[][]{
+                {"IX", "V", "IV", "I"}, //one places - 9, 5, 4, 1
+                {"XC", "L", "XL", "X"}, //tens - 90, 50, 40, 10
+                {"CM", "D", "CD", "C"}, //hundreds - 900, 500, 400, 1000
+                {"", "", "", "M"} // thousands -Unsupported, Unsupported, Unsupported, 1000
+        };
+
+        StringBuilder sb = new StringBuilder();
+        int currTotal = num;
+
+        // This outer loop represents the decimal place, starting at thousands, then hundreds, then tens, then ones
+        for (int j = 3; j >= 0; j--) {
+            int currentDigit = currTotal/tenToTheX(j); // extract the digit of the current decimal place
+            if (currentDigit == 9) {
+                sb.append(_romanNumerals[j][0]);
+            } else if (currentDigit == 4) {
+                sb.append(_romanNumerals[j][2]);
+            } else {
+                if (currentDigit >= 5) {
+                    sb.append(_romanNumerals[j][1]);
+                }
+
+                for (int i = 0; i < currentDigit % 5; i++) {
+                    sb.append(_romanNumerals[j][3]);
+                }
+            }
+            currTotal -= tenToTheX(j)*currentDigit;
+        }
+
+        return sb.toString();
+    }
+
+    private int tenToTheX(int x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("X must be greater than 0");
+        }
+        if (x == 0) {
+            return 1;
+        }
+
+        int total = 10;
+        for (int i = 1; i < x; i++) {
+            total *= 10;
+        }
+        return total;
+    }
+
+    /**
+     * Chops up the number 1 piece at a time and converts it to the corresponding roman numerals.
+     * Slightly less brute force than the above but much more difficult to read and much more code.
+     */
+    public String intToRoman3(int num) {
+        if (num <= 0) { return ""; }
+        if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
+
         StringBuilder sb = new StringBuilder();
         int currTotal = num;
 
         // thousands Place
-        int thousands = currTotal/1000;
-        currTotal -= 1000*thousands;
+        int thousands = currTotal / 1000;
+        currTotal -= 1000 * thousands;
         for (int i = 0; i < thousands; i++) {
             sb.append("M");
         }
 
         // hundreds place
-        int hundreds = currTotal/100;
+        int hundreds = currTotal / 100;
         if (hundreds == 9) {
             sb.append('C');
             sb.append('M');
@@ -55,10 +115,10 @@ public class P_0012 {
                 sb.append("C");
             }
         }
-        currTotal -= 100*hundreds;
+        currTotal -= 100 * hundreds;
 
         // tens place
-        int tens = currTotal/10;
+        int tens = currTotal / 10;
         if (tens == 9) {
             sb.append('X');
             sb.append('C');
@@ -75,7 +135,7 @@ public class P_0012 {
             }
         }
 
-        currTotal -= 10*tens;
+        currTotal -= 10 * tens;
 
         // ones place
         int ones = currTotal;
@@ -98,7 +158,6 @@ public class P_0012 {
 
         return sb.toString();
     }
-
 }
 
 /*

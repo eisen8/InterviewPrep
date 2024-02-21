@@ -17,7 +17,9 @@ public class P_0012_Tests {
                 Arguments.of(1, "I"), // 1
                 Arguments.of(0, ""), // 0
                 Arguments.of(1999, "MCMXCIX"), // 1999
-                Arguments.of(1449, "MCDXLIX") // 1449
+                Arguments.of(1449, "MCDXLIX"), // 1449
+                Arguments.of(1444, "MCDXLIV"), // 1444
+                Arguments.of(3999, "MMMCMXCIX") // 3999
         );
     }
 
@@ -34,6 +36,16 @@ public class P_0012_Tests {
     @ParameterizedTest
     @MethodSource("basicTestParameters")
     public void intToRoman2_BasicParameters(int num, String expected) {
+        P_0012 CUT = new P_0012();
+
+        String result  = CUT.intToRoman2(num);
+
+        Assertions.assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void intToRoman3_BasicParameters(int num, String expected) {
         P_0012 CUT = new P_0012();
 
         String result  = CUT.intToRoman2(num);

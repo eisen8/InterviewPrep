@@ -1,4 +1,4 @@
-package misc;
+package algorithms;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

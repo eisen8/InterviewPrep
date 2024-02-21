@@ -1,4 +1,4 @@
-package misc;
+package algorithms;
 
 import java.util.*;
 

@@ -3,9 +3,9 @@ package data_structures.lists;
 import data_structures.utilities.Utils;
 
 /**
- * A singly linked list
+ * A doubly linked list
  */
-public class LinkedList<T> implements IList<T> {
+public class DoublyLinkedList<T> implements IList<T> {
     private int _size;
     private LinkNode<T> _head; // The head node of the linked list
     private LinkNode<T> _tail; // Points to the last node in the linked list (index[size-1]).
@@ -13,7 +13,7 @@ public class LinkedList<T> implements IList<T> {
     /**
      * Initializes an instance of LinkedList
      */
-    public LinkedList() {
+    public DoublyLinkedList() {
         _head = null;
         _tail = null;
         _size = 0;
@@ -38,7 +38,7 @@ public class LinkedList<T> implements IList<T> {
     }
 
     /**
-     * Removes all elements from the list
+     * Removes all elements from the list.
      * Time: O(1)
      */
     @Override
@@ -53,22 +53,17 @@ public class LinkedList<T> implements IList<T> {
      * Time: O(1)
      */
     @Override
-    public int size() {
-        return _size;
-    }
+    public int size() { return _size; }
 
     /**
      * Checks if the list is empty.
-     * Time: O(1)
      */
     @Override
-    public boolean isEmpty() {
-        return (_size == 0);
-    }
+    public boolean isEmpty() { return _size == 0; }
 
     /**
      * Gets the element at the specified index
-     * Time: O(n)
+     * Time: O(n/2)
      */
     @Override
     public T get(int index) {
@@ -76,12 +71,7 @@ public class LinkedList<T> implements IList<T> {
             throw new IndexOutOfBoundsException();
         }
 
-        LinkNode<T> currentNode = _head;
-        for (int i = 0; i < index; i++) {
-            currentNode = currentNode.next;
-        }
-
-        return currentNode.data;
+        return getNodeAt(index).data;
     }
 
     /**
@@ -103,7 +93,7 @@ public class LinkedList<T> implements IList<T> {
     }
 
     /**
-     * Adds the element to the end of the list.
+     * Adds the element to the end of the list
      * Time: O(1)
      */
     @Override
@@ -112,15 +102,18 @@ public class LinkedList<T> implements IList<T> {
             _head = new LinkNode<>(element);
             _tail = _head;
         } else {
-            _tail.next = new LinkNode<>(element);
-            _tail = _tail.next;
+            LinkNode<T> newNode = new LinkNode<>(element);
+            LinkNode<T> prevEndNode = _tail;
+            newNode.prev = prevEndNode;
+            prevEndNode.next = newNode;
+            _tail = newNode;
         }
         _size++;
     }
 
     /**
      * Sets the specified index to the element (replacing the previous element).
-     * Time: O(n)
+     * Time: O(n/2)
      */
     @Override
     public void set(int index, T element) {
@@ -128,39 +121,36 @@ public class LinkedList<T> implements IList<T> {
             throw new IndexOutOfBoundsException();
         }
 
-        LinkNode<T> currentNode = _head;
-        for (int i = 0; i < index; i++) {
-            currentNode = currentNode.next;
-        }
-
-        currentNode.data = element;
+        getNodeAt(index).data = element;
     }
 
     /**
-     * Removes the element at the specified index. Returns the element.
-     * Time: O(n)
+     * Removes the element at the specified index.
+     * Time: O(n/2)
      */
     @Override
     public T remove(int index) {
         if (index >= _size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        
-        LinkNode<T> prevNode = _head;
-        LinkNode<T> currentNode = _head;
-        for (int i = 0; i < index; i++) {
-            prevNode = currentNode;
-            currentNode = currentNode.next;
-        }
+
+        LinkNode<T> currentNode = getNodeAt(index);
 
         if (currentNode == _head) { // handle case if we are removing head
             _head = currentNode.next;
+            if (_head != null) {
+                _head.prev = null;
+            }
         } else {
+            LinkNode<T> prevNode = currentNode.prev;
             prevNode.next = currentNode.next; // remove by jumping node
+            if (prevNode.next != null) {
+                prevNode.next.prev = prevNode;
+            }
         }
 
         if (_tail == currentNode) { // update tail if we removed the tail node
-            _tail = prevNode;
+            _tail = currentNode.prev;
         }
 
         _size--;
@@ -169,7 +159,7 @@ public class LinkedList<T> implements IList<T> {
 
     /**
      * Removes the first instance of an element. Returns true if an element was removed or false if not.
-     * Time: O(n)
+     * O(n)
      */
     @Override
     public boolean remove(T element) {
@@ -212,7 +202,29 @@ public class LinkedList<T> implements IList<T> {
     }
 
     /**
-     * Represents a link node in the linked list.
+     * Retrieves the node at index
+     * time: O(n/2)
+     */
+    private LinkNode<T> getNodeAt(int index) {
+        LinkNode<T> currentNode;
+        if (index <= _size/2) { // go forward
+            currentNode = _head;
+            for (int i = 0; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+        } else { // go backwards
+            currentNode = _tail;
+            for (int i = _size-1; i > index; i--) {
+                currentNode = currentNode.prev;
+            }
+        }
+
+        return currentNode;
+    }
+
+
+    /**
+     * Represents a link node in the doubly linked list.
      */
     private static class LinkNode<T> {
 
@@ -220,6 +232,11 @@ public class LinkedList<T> implements IList<T> {
          * The next node in the linked list.
          */
         public LinkNode<T> next;
+
+        /**
+         * The prev node in the linked list.
+         */
+        public LinkNode<T> prev;
 
         /**
          * The data stored in this node.
@@ -232,6 +249,4 @@ public class LinkedList<T> implements IList<T> {
             next = null;
         }
     }
-
-
 }

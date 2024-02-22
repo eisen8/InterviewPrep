@@ -1,5 +1,7 @@
 package data_structures.lists;
 
+import data_structures.utilities.Utils;
+
 import java.util.Arrays;
 
 /**
@@ -35,7 +37,7 @@ public class ArrayList<T> implements IList<T> {
     @Override
     public boolean contains(T element) {
         for (T ele : _array) {
-            if ((ele == null && element == null) || (ele != null && ele.equals(element))) {
+            if (Utils.equals(ele, element)) {
                 return true;
             }
         }
@@ -88,7 +90,7 @@ public class ArrayList<T> implements IList<T> {
     public int indexOf(T element) {
         for (int i = 0; i < _array.length; i++) {
 
-            if ((_array[i] == null && element == null) || (_array[i] != null && _array[i].equals(element))) {
+            if (Utils.equals(_array[i], element)) {
                 return i;
             }
         }

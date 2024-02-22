@@ -14,6 +14,19 @@ public class ArrayUtils {
     }
 
     /**
+     * Returns the first index of an element in a given array
+     */
+    public static <T> int firstIndexOf(T[] array, T element) {
+        for (int i = 0; i < array.length; i++) {
+            if (Utils.equals(element, array[i])) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      * Copies an array and returns a new array. If newSize is larger than the original array, the additional size of the
      * copied array will be padded with the defaultValue. If newSize is smaller, the copied array will only contain the first newSize
      * elements of the array.

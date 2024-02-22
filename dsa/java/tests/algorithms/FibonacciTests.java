@@ -34,7 +34,7 @@ public class FibonacciTests {
 
     @ParameterizedTest
     @MethodSource("fibBasicParameters")
-    public void RecursiveFib_FibBasicParameters(int n, int expected) {
+    public void recursiveFib_FibBasicParameters(int n, int expected) {
         Fibonacci CUT = new Fibonacci();
 
         int result = CUT.recursiveFib(n);
@@ -44,7 +44,7 @@ public class FibonacciTests {
 
     @ParameterizedTest
     @MethodSource("fibBasicParameters")
-    public void CachedRecursiveFib_FibBasicParameters(int n, int expected) {
+    public void cachedRecursiveFib_FibBasicParameters(int n, int expected) {
         Fibonacci CUT = new Fibonacci();
 
         int result = CUT.cachedRecursiveFib(n);
@@ -53,7 +53,7 @@ public class FibonacciTests {
     }
 
     @Test
-    public void CachedRecursiveFib_ResizeCache() {
+    public void cachedRecursiveFib_ResizeCache() {
         Fibonacci CUT = new Fibonacci(5);
 
         int result = CUT.cachedRecursiveFib(40);
@@ -63,7 +63,7 @@ public class FibonacciTests {
 
     @ParameterizedTest
     @MethodSource("fibBasicParameters")
-    public void IterativeFib_FibBasicParameters(int n, int expected) {
+    public void iterativeFib_FibBasicParameters(int n, int expected) {
         Fibonacci CUT = new Fibonacci();
 
         int result = CUT.iterativeFib(n);
@@ -73,7 +73,7 @@ public class FibonacciTests {
 
     @ParameterizedTest
     @MethodSource("fibBasicParameters")
-    public void IterativeStackFib_FibBasicParameters(int n, int expected) {
+    public void iterativeStackFib_FibBasicParameters(int n, int expected) {
         Fibonacci CUT = new Fibonacci();
 
         int result = CUT.iterativeStackFib(n);
@@ -83,7 +83,7 @@ public class FibonacciTests {
 
     @ParameterizedTest
     @MethodSource("fibBasicParameters")
-    public void IterativeStackFib2_FibBasicParameters(int n, int expected) {
+    public void iterativeStackFib2_FibBasicParameters(int n, int expected) {
         Fibonacci CUT = new Fibonacci();
 
         int result = CUT.iterativeStackFib2(n);

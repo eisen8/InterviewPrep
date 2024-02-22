@@ -1,23 +1,27 @@
 package data_structures.lists;
 
+import java.util.Arrays;
+
 /**
  * An array list that automatically resizes.
  * Warnings: Not thread-safe.
  */
 public class ArrayList<T> implements IList<T> {
+    private final static int DEFAULT_CAPACITY = 100; // initial default capacity
+    private final static int RESIZE_FACTOR = 2; // factor to resize by if needed
 
     private T[] _array; // internal array
     private int _numElements = 0; // num of current elements in array
 
-    private int _initialSize;
+    private final int _initialSize;
 
     public ArrayList() {
-        this(100);
+        this(DEFAULT_CAPACITY);
     }
 
     public ArrayList(int initialSize) {
-        if (initialSize < 0) {
-            throw new IllegalArgumentException("Initial size must be greater than 0");
+        if (initialSize < 1) {
+            throw new IllegalArgumentException("Initial size must be greater than 1");
         }
 
         _array = (T[]) new Object[initialSize];
@@ -31,7 +35,7 @@ public class ArrayList<T> implements IList<T> {
     @Override
     public boolean contains(T element) {
         for (T ele : _array) {
-            if (ele != null && ele.equals(element)) {
+            if ((ele == null && element == null) || (ele != null && ele.equals(element))) {
                 return true;
             }
         }
@@ -60,6 +64,14 @@ public class ArrayList<T> implements IList<T> {
     }
 
     /**
+     * Checks if the list is empty.
+     */
+    @Override
+    public boolean isEmpty() {
+        return (_numElements == 0);
+    }
+
+    /**
      * Gets the element at the specified index
      * Time: O(1)
      */
@@ -76,15 +88,7 @@ public class ArrayList<T> implements IList<T> {
     public int indexOf(T element) {
         for (int i = 0; i < _array.length; i++) {
 
-            // Case for null array elements
-            if (_array[i] == null) {
-                if (element == null) {
-                    return i;
-                }
-                continue;
-            }
-
-            if (_array[i].equals(element)) {
+            if ((_array[i] == null && element == null) || (_array[i] != null && _array[i].equals(element))) {
                 return i;
             }
         }
@@ -112,6 +116,10 @@ public class ArrayList<T> implements IList<T> {
      */
     @Override
     public void set(int index, T element) {
+        if (index >= _numElements || index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
         _array[index] = element;
     }
 
@@ -121,11 +129,13 @@ public class ArrayList<T> implements IList<T> {
      */
     @Override
     public T remove(int index) {
-        if (index >= _numElements) {
+        if (index >= _numElements || index < 0) {
             throw new IndexOutOfBoundsException();
         }
 
         T element = _array[index];
+
+        // Move over every other element greater than index
         for (int i = index; i < _numElements - 1; i++) {
             _array[i] = _array[i + 1];
         }
@@ -164,8 +174,6 @@ public class ArrayList<T> implements IList<T> {
      * Resizes the internal array
      */
     private void resize() {
-        T[] newArray = (T[]) new Object[_array.length*2];
-        System.arraycopy(_array, 0, newArray, 0, _numElements);
-        _array = newArray;
+        _array = Arrays.copyOf(_array, _array.length*RESIZE_FACTOR);
     }
 }

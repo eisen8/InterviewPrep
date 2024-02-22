@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TrieTests {
 
     @Test
-    public void Insert_SeveralWords() {
+    public void insert_SeveralWords() {
         Trie CUT = new Trie();
 
         CUT.insert("a");
@@ -19,7 +19,7 @@ public class TrieTests {
     }
 
     @Test
-    public void Insert_DuplicateWords_OnlyCountOnce() {
+    public void insert_DuplicateWords_OnlyCountOnce() {
         Trie CUT = new Trie();
 
         CUT.insert("a");
@@ -43,7 +43,7 @@ public class TrieTests {
     }
 
     @Test
-    public void Search_SeveralWordsThatExist_ReturnsTrue() {
+    public void search_SeveralWordsThatExist_ReturnsTrue() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");
@@ -57,7 +57,7 @@ public class TrieTests {
     }
 
     @Test
-    public void Search_SeveralWordsThatDontExist_ReturnsFalse() {
+    public void search_SeveralWordsThatDontExist_ReturnsFalse() {
         Trie CUT = new Trie();
         CUT.insert("a");
         CUT.insert("apple");

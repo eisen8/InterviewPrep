@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BinarySearchTreeTests {
     @Test
-    public void Contains_NoElements_ReturnsFalse() {
+    public void contains_NoElements_ReturnsFalse() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         boolean result = CUT.contains(5);
@@ -15,7 +15,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Insert_FiveIntegers_InOrder() {
+    public void insert_FiveIntegers_InOrder() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         CUT.insert(0);
@@ -33,7 +33,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Insert_FiveIntegers_InverseOrder() {
+    public void insert_FiveIntegers_InverseOrder() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         CUT.insert(4);
@@ -51,7 +51,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Insert_FiveIntegers_OutOfOrder() {
+    public void insert_FiveIntegers_OutOfOrder() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         CUT.insert(3);
@@ -69,7 +69,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Insert_DuplicateElement() {
+    public void insert_DuplicateElement() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         CUT.insert(3);
@@ -84,7 +84,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Contains_DoesntContainElements() {
+    public void contains_DoesntContainElements() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         CUT.insert(3);
@@ -103,7 +103,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_NoElements_ReturnsFalse() {
+    public void remove_NoElements_ReturnsFalse() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
 
         boolean result = CUT.remove(5);
@@ -112,7 +112,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_Root() {
+    public void remove_Root() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
 
@@ -123,7 +123,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RootWithOneLeftChild() {
+    public void remove_RootWithOneLeftChild() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -135,7 +135,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RootWithOneRightChild() {
+    public void remove_RootWithOneRightChild() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(7);
@@ -147,7 +147,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RootWithTwoChildren() {
+    public void remove_RootWithTwoChildren() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -160,7 +160,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_LeftChildWithNoChildren() {
+    public void remove_LeftChildWithNoChildren() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -174,7 +174,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_LeftChildWithOneChild() {
+    public void remove_LeftChildWithOneChild() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -189,7 +189,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_LeftChildWithTwoChildren() {
+    public void remove_LeftChildWithTwoChildren() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(7);
         CUT.insert(5);
@@ -204,7 +204,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RightChildWithNoChildren() {
+    public void remove_RightChildWithNoChildren() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -218,7 +218,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RightChildWithOneChild() {
+    public void remove_RightChildWithOneChild() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);
@@ -233,7 +233,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void Remove_RightChildWithTwoChildren() {
+    public void remove_RightChildWithTwoChildren() {
         BinarySearchTree<Integer> CUT = new BinarySearchTree<>();
         CUT.insert(5);
         CUT.insert(3);

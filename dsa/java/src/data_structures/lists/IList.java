@@ -21,6 +21,11 @@ public interface IList<T> {
     public int size();
 
     /**
+     *  Checks if the list is empty.
+     */
+    public boolean isEmpty();
+
+    /**
      * Gets the element at the specified index
      */
     public T get(int index);

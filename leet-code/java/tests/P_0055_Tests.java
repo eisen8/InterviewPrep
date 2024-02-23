@@ -23,7 +23,7 @@ public class P_0055_Tests {
                 Arguments.of(new int[]{2,0,2,0,3,0,0,1}, true), // barely able to make it
                 Arguments.of(new int[]{100,0,0,0,0,0,0,0}, true), // super jump
                 Arguments.of(new int[]{0,0,0,0,0,0,0,0}, false), // all zeroes
-                Arguments.of(new int[]{5,9,3,2,1,0,2,3,3,1,0,0}, true) // all zeroes
+                Arguments.of(new int[]{5,9,3,2,1,0,2,3,3,1,0,0}, true) //
         );
     }
 

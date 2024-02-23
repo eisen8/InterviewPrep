@@ -8,12 +8,13 @@ import java.util.Map;
 // See bottom for problem statement
 public class P_0055 {
     /**
-     * Recursively checking all paths.
+     * Go through each index checking what the farthest we can jump is. If i goes past where we can currently
+     * jump then return false. If we make it to the final index we return true.
      */
     public boolean canJumpOptimal(int[] nums) {
         int farthestIndex = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (i > farthestIndex) { return false; }
+            if (i > farthestIndex) { return false; } // we've gone past the farthest we can jump
             farthestIndex = Math.max(farthestIndex, i + nums[i]);
         }
         return true;

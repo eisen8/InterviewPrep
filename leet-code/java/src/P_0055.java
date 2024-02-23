@@ -7,6 +7,18 @@ import java.util.Map;
 // 55. Jump Game --- https://leetcode.com/problems/jump-game/description
 // See bottom for problem statement
 public class P_0055 {
+    /**
+     * Recursively checking all paths.
+     */
+    public boolean canJumpOptimal(int[] nums) {
+        int farthestIndex = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > farthestIndex) { return false; }
+            farthestIndex = Math.max(farthestIndex, i + nums[i]);
+        }
+        return true;
+    }
+
 
     /**
      * Recursively checking all paths.

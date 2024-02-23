@@ -29,6 +29,16 @@ public class P_0055_Tests {
 
     @ParameterizedTest
     @MethodSource("basicTestParameters")
+    public void canJumpOptimal_BasicParameters(int[] nums, boolean expected) {
+        P_0055 CUT = new P_0055();
+
+        boolean result  = CUT.canJumpOptimal(nums);
+
+        Assertions.assertEquals(expected, result);
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
     public void canJump_BasicParameters(int[] nums, boolean expected) {
         P_0055 CUT = new P_0055();
 

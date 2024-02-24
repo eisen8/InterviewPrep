@@ -1,6 +1,7 @@
 package algorithms;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * Different implementations of a Fibonacci number calculator. For this implementation, f(0) through f(4) are 0, 1, 1, 2, 3.
@@ -11,13 +12,14 @@ public class Fibonacci {
 
     /**
      * A slow recursive implementation of fibonacci numbers
+     *
      * @param n The Nth instance of the fibonacci number to return
      * @return The Fibonacci number at N
      */
     public int recursiveFib(int n) {
         if (n <= 0) { return 0; }
         if (n <= 2) { return 1; }
-        return (recursiveFib(n-1) + recursiveFib(n-2)); // f(n) = f(n-1) + f(n-2)
+        return (recursiveFib(n-1)+recursiveFib(n-2)); // f(n) = f(n-1) + f(n-2)
     }
 
     /**
@@ -30,7 +32,7 @@ public class Fibonacci {
 
         if (cacheArray[n] != UNCACHED) { return cacheArray[n]; }
 
-        int fibVal = cachedRecursiveFib(n-1) + cachedRecursiveFib(n-2); // f(n) = f(n-1) + f(n-2)
+        int fibVal = cachedRecursiveFib(n-1)+cachedRecursiveFib(n-2); // f(n) = f(n-1) + f(n-2)
         cacheArray[n] = fibVal;
         return fibVal;
     }
@@ -45,8 +47,8 @@ public class Fibonacci {
         int next, prev1, prev2;
         next = prev1 = prev2 = 1;
 
-        for (int i = 3; i <= n ; i++) {
-            next = prev1 + prev2; // f(n) = f(n-1) + f(n-2)
+        for (int i = 3; i <= n; i++) {
+            next = prev1+prev2; // f(n) = f(n-1) + f(n-2)
             prev2 = prev1;
             prev1 = next;
 
@@ -68,7 +70,7 @@ public class Fibonacci {
         for (int i = 3; i <= n; i++) { //f(3+)
             int prev1 = stack.pop();
             int prev2 = stack.pop();
-            int next = prev1 + prev2;
+            int next = prev1+prev2;
             stack.push(prev1);
             stack.push(next);
         }
@@ -91,8 +93,8 @@ public class Fibonacci {
             if (curr <= 2) {
                 fibVal += 1;
             } else {
-                stack.push(curr - 1);
-                stack.push(curr - 2);
+                stack.push(curr-1);
+                stack.push(curr-2);
             }
         }
 
@@ -127,7 +129,7 @@ public class Fibonacci {
      * Resizes the cache array
      */
     private void resizeCacheArray(int minSize) {
-        int[] newCacheArray = new int[(cacheArray.length + minSize) * 2];
+        int[] newCacheArray = new int[(cacheArray.length+minSize)*2];
         Arrays.fill(newCacheArray, UNCACHED);
         System.arraycopy(cacheArray, 0, newCacheArray, 0, cacheArray.length);
 

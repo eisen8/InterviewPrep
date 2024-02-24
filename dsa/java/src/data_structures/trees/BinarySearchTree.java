@@ -11,6 +11,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         public T value;
         public Node<T> left; // Left child node
         public Node<T> right; // Right child node
+
         public Node(T value) {
             this.value = value;
         }
@@ -35,16 +36,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } else {
             boolean finished = false;
             Node<T> currentNode = _root;
-            while(!finished) {
+            while (!finished) {
                 if (currentNode.value.compareTo(element) > 0) { // go left
-                    if  (currentNode.left == null) { // insert
+                    if (currentNode.left == null) { // insert
                         currentNode.left = new Node<>(element);
                         finished = true;
                     } else { // keep searching
                         currentNode = currentNode.left;
                     }
                 } else { // go right
-                    if  (currentNode.right == null) { // insert
+                    if (currentNode.right == null) { // insert
                         currentNode.right = new Node<>(element);
                         finished = true;
                     } else { // keep searching
@@ -95,10 +96,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return false; // element doesn't exist
         }
 
-        boolean isRightNode = false;
-        if (parentNode.left == null || parentNode.left.value.compareTo(element) != 0) {
-            isRightNode = true;
-        }
+        boolean isRightNode = parentNode.left == null || parentNode.left.value.compareTo(element) != 0;
         Node<T> nodeToRemove = isRightNode ? parentNode.right : parentNode.left;
 
         // Case 1: no leaf nodes, set parent left or right to null
@@ -156,7 +154,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         Node<T> parentNode = node;
         Node<T> currentNode = node.right;
-        while(currentNode.left != null) {
+        while (currentNode.left != null) {
             parentNode = currentNode;
             currentNode = currentNode.left;
         }
@@ -170,6 +168,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         return currentNode.value;
     }
+
     private Node<T> getParentNode(T element) {
         if (_root == null) {
             return null;
@@ -177,7 +176,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         Node<T> parentNode = _root;
         Node<T> currentNode = _root;
-        while(true) {
+        while (true) {
             if (currentNode.value.compareTo(element) == 0) {
                 return parentNode; // found element
             } else if (currentNode.value.compareTo(element) > 0) { // go left
@@ -188,7 +187,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                     currentNode = currentNode.left;
                 }
             } else { // go right
-                if  (currentNode.right == null) {
+                if (currentNode.right == null) {
                     return null; // doesn't exist
                 } else {
                     parentNode = currentNode;

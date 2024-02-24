@@ -138,8 +138,8 @@ public class ArrayList<T> implements IList<T> {
         T element = _array[index];
 
         // Move over every other element greater than index
-        for (int i = index; i < _numElements - 1; i++) {
-            _array[i] = _array[i + 1];
+        for (int i = index; i < _numElements-1; i++) {
+            _array[i] = _array[i+1];
         }
 
         _numElements--;

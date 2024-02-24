@@ -14,6 +14,7 @@ public class Trie {
 
     /**
      * Inserts a new word into the trie.
+     *
      * @param word The word to insert.
      */
     public void insert(String word) {
@@ -41,6 +42,7 @@ public class Trie {
 
     /**
      * Searches if a given word is in the trie.
+     *
      * @param word The word to search.
      * @return True if the word exists. False if not.
      */
@@ -68,6 +70,7 @@ public class Trie {
 
     /**
      * Returns all words in the trie that start with the prefix (including if the prefix is a word).
+     *
      * @param prefix The prefix.
      * @return All words that start with the prefix.
      */
@@ -77,7 +80,8 @@ public class Trie {
 
     /**
      * Returns all words in the trie that start with the prefix (including if the prefix is a word).
-     * @param prefix The prefix.
+     *
+     * @param prefix        The prefix.
      * @param maxNumResults The maximum number of results
      * @return All words that start with the prefix.
      */
@@ -154,11 +158,7 @@ public class Trie {
     private boolean isValidCharacter(char c) {
         if (c >= 'a' && c <= 'z') {
             return true;
-        } else if (c == '-') {
-            return true;
-        }
-
-        return false;
+        } else return c == '-';
     }
 
     private static final int NUM_VALID_CHARS = 27;
@@ -166,7 +166,7 @@ public class Trie {
     private int getChildIndex(char c) {
         if (c == '-') { return 26; }
 
-        return c - 'a';
+        return c-'a';
     }
 
 

@@ -35,14 +35,14 @@ public abstract class IListBaseTests {
      */
     private static Stream<Arguments> basicAddParameters() {
         return Stream.of( // (numbers)
-                Arguments.of(new Object[]{new Integer[]{1,2,3,4}}), // all in order
-                Arguments.of(new Object[]{new Integer[]{4,3,2,1}}), // inverse order
+                Arguments.of(new Object[]{new Integer[]{1, 2, 3, 4}}), // all in order
+                Arguments.of(new Object[]{new Integer[]{4, 3, 2, 1}}), // inverse order
                 Arguments.of(new Object[]{new Integer[]{1}}), // 1 element
-                Arguments.of(new Object[]{new Integer[]{3,1,2}}), // 3 elements
-                Arguments.of(new Object[]{new Integer[]{1,1,1}}), // duplicate elements
-                Arguments.of(new Object[]{new Integer[]{3,1,3,1}}), // duplicate elements
-                Arguments.of(new Object[]{new Integer[]{3,null,null,1}}), // nulls are fine
-                Arguments.of(new Object[]{new Integer[]{3,1,1,5,4,7,8,9,11,15,2,5,18,25,100,3,1,4,56,78,12,33,11,69,8,64,101,112,1}}) // lots of random numbers
+                Arguments.of(new Object[]{new Integer[]{3, 1, 2}}), // 3 elements
+                Arguments.of(new Object[]{new Integer[]{1, 1, 1}}), // duplicate elements
+                Arguments.of(new Object[]{new Integer[]{3, 1, 3, 1}}), // duplicate elements
+                Arguments.of(new Object[]{new Integer[]{3, null, null, 1}}), // nulls are fine
+                Arguments.of(new Object[]{new Integer[]{3, 1, 1, 5, 4, 7, 8, 9, 11, 15, 2, 5, 18, 25, 100, 3, 1, 4, 56, 78, 12, 33, 11, 69, 8, 64, 101, 112, 1}}) // lots of random numbers
         );
     }
 

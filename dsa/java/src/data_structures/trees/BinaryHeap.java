@@ -1,7 +1,5 @@
 package data_structures.trees;
 
-import java.util.Arrays;
-
 public class BinaryHeap<T extends Comparable<T>> {
 
     public enum SortType {
@@ -9,7 +7,7 @@ public class BinaryHeap<T extends Comparable<T>> {
         MAX // Sorted by the maximum element first
     }
 
-    private T[] _elements ; // internal array representation. Starts at index 1 to make calculations easier.
+    private T[] _elements; // internal array representation. Starts at index 1 to make calculations easier.
     private int _currentSize; // The current number of elements in the heap.
 
     private final SortType _type;
@@ -36,11 +34,11 @@ public class BinaryHeap<T extends Comparable<T>> {
             throw new IllegalArgumentException("Element cannot be null");
         }
 
-        if (_currentSize == _elements.length - 1) {
+        if (_currentSize == _elements.length-1) {
             resizeHeap();
         }
 
-        int index = _currentSize + 1; // add to element to last slot and bubble up
+        int index = _currentSize+1; // add to element to last slot and bubble up
         _elements[index] = element;
         bubbleUp(index);
         _currentSize++;
@@ -121,8 +119,7 @@ public class BinaryHeap<T extends Comparable<T>> {
             if (compareElements(_elements, parent, index) > 0) {
                 swapElements(_elements, index, parent);
                 index = parent;
-            }
-            else {
+            } else {
                 done = true;
             }
         }
@@ -147,8 +144,7 @@ public class BinaryHeap<T extends Comparable<T>> {
             if (compareElements(_elements, index, childToSwap) > 0) {
                 swapElements(_elements, index, childToSwap);
                 index = childToSwap;
-            }
-            else {
+            } else {
                 done = true;
             }
         }
@@ -158,21 +154,21 @@ public class BinaryHeap<T extends Comparable<T>> {
      * Returns the parent index of a given index
      */
     private int getParentIndex(int index) {
-        return (index / 2);
+        return (index/2);
     }
 
     /**
      * Returns the index of the left child node of a given index
      */
     private int getLeftChildIndex(int index) {
-        return (index * 2);
+        return (index*2);
     }
 
     /**
      * Returns the index of the right child node of a given index
      */
     private int getRightChildIndex(int index) {
-        return ((index * 2) + 1);
+        return ((index*2)+1);
     }
 
     /**
@@ -213,7 +209,7 @@ public class BinaryHeap<T extends Comparable<T>> {
         T element1 = array[index1];
         T element2 = array[index2];
 
-        if(_type == SortType.MIN) {
+        if (_type == SortType.MIN) {
             return element1.compareTo(element2);
         } else {
             return element2.compareTo(element1);
@@ -223,8 +219,7 @@ public class BinaryHeap<T extends Comparable<T>> {
     /**
      * Resizes the array
      */
-    private void resizeHeap()
-    {
+    private void resizeHeap() {
         T[] newArray = (T[]) new Comparable[_elements.length*2];
         System.arraycopy(_elements, 0, newArray, 0, _elements.length);
         _elements = newArray;

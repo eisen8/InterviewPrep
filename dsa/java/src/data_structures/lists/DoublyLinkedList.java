@@ -243,8 +243,7 @@ public class DoublyLinkedList<T> implements IList<T> {
          */
         public T data;
 
-        public LinkNode(T data)
-        {
+        public LinkNode(T data) {
             this.data = data;
             next = null;
         }

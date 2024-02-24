@@ -37,9 +37,7 @@ public class ArrayUtils {
         // Copy from original array to the copy. Copy the first newSize values or the entire array (whichever if smaller)
         int indexesToCopy = Math.min(newSize, array.length);
 
-        for (int i = 0; i < indexesToCopy; i++) {
-            copy[i] = array[i];
-        }
+        System.arraycopy(array, 0, copy, 0, indexesToCopy);
 
         // Initialize any excess size to defaultValue
         for (int i = array.length; i < newSize; i++) {

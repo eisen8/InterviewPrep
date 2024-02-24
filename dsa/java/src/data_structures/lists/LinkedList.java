@@ -145,7 +145,7 @@ public class LinkedList<T> implements IList<T> {
         if (index >= _size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
-        
+
         LinkNode<T> prevNode = _head;
         LinkNode<T> currentNode = _head;
         for (int i = 0; i < index; i++) {
@@ -226,8 +226,7 @@ public class LinkedList<T> implements IList<T> {
          */
         public T data;
 
-        public LinkNode(T data)
-        {
+        public LinkNode(T data) {
             this.data = data;
             next = null;
         }

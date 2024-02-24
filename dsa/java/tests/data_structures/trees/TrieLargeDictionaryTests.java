@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,7 +20,7 @@ public class TrieLargeDictionaryTests {
     public static void constructTrie() throws IOException {
         trie = new Trie();
         String myCurrentDir = System.getProperty("user.dir");
-        Path path = FileSystems.getDefault().getPath(myCurrentDir + "\\tests\\data_structures\\test-data\\words\\english_words.txt");
+        Path path = FileSystems.getDefault().getPath(myCurrentDir+"\\tests\\data_structures\\test-data\\words\\english_words.txt");
         List<String> words = Files.readAllLines(path);
         for (String word : words) {
             trie.insert(word);

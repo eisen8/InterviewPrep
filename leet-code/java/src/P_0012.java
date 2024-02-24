@@ -20,13 +20,12 @@ public class P_0012 {
         if (num <= 0) { return ""; }
         if (num > 3999) { throw new IllegalArgumentException("Num must be less than 4000"); }
 
-        StringBuilder sb = new StringBuilder();
         // Note: Could turn this into a for loop
-        sb.append(_toRomanNumerals[3][num / 1000]);
-        sb.append(_toRomanNumerals[2][num % 1000 / 100]);
-        sb.append(_toRomanNumerals[1][num % 100 / 10]);
-        sb.append(_toRomanNumerals[0][num % 10]);
-        return sb.toString();
+        String sb = _toRomanNumerals[3][num/1000]+
+                _toRomanNumerals[2][num%1000/100]+
+                _toRomanNumerals[1][num%100/10]+
+                _toRomanNumerals[0][num%10];
+        return sb;
     }
 
     // Partial Brute force arrays for Solution 2: First array corresponds to the decimal place, 2nd gets the corresponding roman numeral
@@ -60,7 +59,7 @@ public class P_0012 {
                     sb.append(_toRomanNumerals2[j][1]);
                 }
 
-                for (int i = 0; i < currentDigit % 5; i++) {
+                for (int i = 0; i < currentDigit%5; i++) {
                     sb.append(_toRomanNumerals2[j][3]);
                 }
             }
@@ -97,14 +96,14 @@ public class P_0012 {
         int currTotal = num;
 
         // thousands Place
-        int thousands = currTotal / 1000;
-        currTotal -= 1000 * thousands;
+        int thousands = currTotal/1000;
+        currTotal -= 1000*thousands;
         for (int i = 0; i < thousands; i++) {
             sb.append("M");
         }
 
         // hundreds place
-        int hundreds = currTotal / 100;
+        int hundreds = currTotal/100;
         if (hundreds == 9) {
             sb.append('C');
             sb.append('M');
@@ -116,14 +115,14 @@ public class P_0012 {
                 sb.append('D');
             }
 
-            for (int i = 0; i < hundreds % 5; i++) {
+            for (int i = 0; i < hundreds%5; i++) {
                 sb.append("C");
             }
         }
-        currTotal -= 100 * hundreds;
+        currTotal -= 100*hundreds;
 
         // tens place
-        int tens = currTotal / 10;
+        int tens = currTotal/10;
         if (tens == 9) {
             sb.append('X');
             sb.append('C');
@@ -135,12 +134,12 @@ public class P_0012 {
                 sb.append('L');
             }
 
-            for (int i = 0; i < tens % 5; i++) {
+            for (int i = 0; i < tens%5; i++) {
                 sb.append("X");
             }
         }
 
-        currTotal -= 10 * tens;
+        currTotal -= 10*tens;
 
         // ones place
         int ones = currTotal;
@@ -155,7 +154,7 @@ public class P_0012 {
                 sb.append('V');
             }
 
-            for (int i = 0; i < ones % 5; i++) {
+            for (int i = 0; i < ones%5; i++) {
                 sb.append("I");
             }
         }

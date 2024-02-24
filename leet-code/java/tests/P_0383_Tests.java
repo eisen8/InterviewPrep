@@ -22,7 +22,7 @@ public class P_0383_Tests {
     public void canConstruct_BasicParameters(String ransom, String magazine, boolean expected) {
         P_0383 CUT = new P_0383();
 
-        boolean result  = CUT.canConstruct(ransom, magazine);
+        boolean result = CUT.canConstruct(ransom, magazine);
 
         Assertions.assertEquals(expected, result);
     }
@@ -32,7 +32,7 @@ public class P_0383_Tests {
     public void canConstruct2_BasicParameters(String ransom, String magazine, boolean expected) {
         P_0383 CUT = new P_0383();
 
-        boolean result  = CUT.canConstruct2(ransom, magazine);
+        boolean result = CUT.canConstruct2(ransom, magazine);
 
         Assertions.assertEquals(expected, result);
     }

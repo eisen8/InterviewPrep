@@ -18,7 +18,7 @@ public class P_0013_Tests {
                 Arguments.of("", 0), // 0
                 Arguments.of(null, 0), // null
                 Arguments.of("MCMXCIX", 1999), // 1999
-                Arguments.of("MCDXLIX", 1449 ) // 1449
+                Arguments.of("MCDXLIX", 1449) // 1449
         );
     }
 
@@ -27,7 +27,7 @@ public class P_0013_Tests {
     public void romanToInt_BasicParameters(String s, int expected) {
         P_0013 CUT = new P_0013();
 
-        int result  = CUT.romanToInt(s);
+        int result = CUT.romanToInt(s);
 
         Assertions.assertEquals(expected, result);
     }

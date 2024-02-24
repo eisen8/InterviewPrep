@@ -20,7 +20,8 @@ public class P_0125 {
             if (!isAlphanumeric(c1)) {
                 p1++;
                 continue;
-            } if (!isAlphanumeric(c2)){
+            }
+            if (!isAlphanumeric(c2)) {
                 p2--;
                 continue;
             }
@@ -41,7 +42,7 @@ public class P_0125 {
             return c;
         }
 
-        return (char)(c + 32);
+        return (char) (c+32);
     }
 
     private boolean isAlphanumeric(char c) {

@@ -28,7 +28,7 @@ public class P_0028_Tests {
     public void strStr_BasicParameters(String haystack, String needle, int expected) {
         P_0028 CUT = new P_0028();
 
-        int result  = CUT.strStr(haystack, needle);
+        int result = CUT.strStr(haystack, needle);
 
         Assertions.assertEquals(expected, result);
     }

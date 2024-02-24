@@ -1,7 +1,3 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
 // 392. Is Subsequence --- https://leetcode.com/problems/is-subsequence/description/
 // See bottom for problem statement
 public class P_0392 {

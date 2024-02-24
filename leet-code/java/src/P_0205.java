@@ -1,7 +1,5 @@
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 // 205. Isomorphic Strings --- https://leetcode.com/problems/isomorphic-strings/description
 // See bottom for problem statement
@@ -32,9 +30,7 @@ public class P_0205 {
                 if (sChar != tCharMap.get(tChar)) { // verify mapping holds
                     return false;
                 }
-            }
-
-            else {
+            } else {
                 sCharMap.put(sChar, tChar);
                 tCharMap.put(tChar, sChar);
             }

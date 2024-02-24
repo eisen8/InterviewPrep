@@ -26,7 +26,7 @@ public class P_0062_Tests {
     public void uniquePaths_BasicParameters(int m, int n, int expected) {
         P_0062 CUT = new P_0062();
 
-        int result  = CUT.uniquePaths(m, n);
+        int result = CUT.uniquePaths(m, n);
 
         Assertions.assertEquals(expected, result);
     }
@@ -36,7 +36,7 @@ public class P_0062_Tests {
     public void uniquePathsWithCache_BasicParameters(int m, int n, int expected) {
         P_0062 CUT = new P_0062();
 
-        int result  = CUT.uniquePathsWithCache(m, n);
+        int result = CUT.uniquePathsWithCache(m, n);
 
         Assertions.assertEquals(expected, result);
     }

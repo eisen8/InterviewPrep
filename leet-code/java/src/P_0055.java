@@ -1,8 +1,5 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 // 55. Jump Game --- https://leetcode.com/problems/jump-game/description
 // See bottom for problem statement
@@ -15,7 +12,7 @@ public class P_0055 {
         int farthestIndex = 0;
         for (int i = 0; i < nums.length; i++) {
             if (i > farthestIndex) { return false; } // we've gone past the farthest we can jump
-            farthestIndex = Math.max(farthestIndex, i + nums[i]);
+            farthestIndex = Math.max(farthestIndex, i+nums[i]);
         }
         return true;
     }
@@ -98,8 +95,8 @@ public class P_0055 {
                     return true; // if the first jump crosses, we are done
                 }
 
-                if (i + nums[i] > bestJump) {
-                    bestJump = numJumps + nums[i];
+                if (i+nums[i] > bestJump) {
+                    bestJump = numJumps+nums[i];
                 }
             }
 

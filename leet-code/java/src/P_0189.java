@@ -8,7 +8,7 @@ public class P_0189 {
      * Space complexity: O(n)
      */
     public void rotate(int[] nums, int k) {
-        k = k % nums.length; // Remove excess loops of k
+        k = k%nums.length; // Remove excess loops of k
         if (nums.length == 1 || k <= 0) { return; }
 
 
@@ -29,19 +29,19 @@ public class P_0189 {
      * Space complexity: O(1)
      */
     public void rotate2(int[] nums, int k) {
-        k = k % nums.length; // Remove excess loops of k
+        k = k%nums.length; // Remove excess loops of k
         if (nums.length == 1 || k <= 0) { return; }
 
-        reverse(nums, nums.length - k, nums.length - 1); // reverse right k elements
-        reverse(nums, 0, nums.length - k - 1); // reverse rest of left side
-        reverse(nums, 0, nums.length - 1); // reverse full array
+        reverse(nums, nums.length-k, nums.length-1); // reverse right k elements
+        reverse(nums, 0, nums.length-k-1); // reverse rest of left side
+        reverse(nums, 0, nums.length-1); // reverse full array
     }
 
     /**
      * Reverse the array from index i to index j. So [1,2,3] becomes [3,2,1]
      */
-    private void reverse(int nums[], int i, int j){
-        while(i < j){
+    private void reverse(int[] nums, int i, int j) {
+        while (i < j) {
             int temp = nums[i];
             nums[i] = nums[j];
             nums[j] = temp;

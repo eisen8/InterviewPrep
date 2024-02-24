@@ -28,7 +28,7 @@ public class P_0205_Tests {
     public void isIsomorphic_BasicParameters(String s, String t, boolean expected) {
         P_0205 CUT = new P_0205();
 
-        boolean result  = CUT.isIsomorphic(s, t);
+        boolean result = CUT.isIsomorphic(s, t);
 
         Assertions.assertEquals(expected, result);
     }
@@ -38,7 +38,7 @@ public class P_0205_Tests {
     public void isIsomorphic2_BasicParameters(String s, String t, boolean expected) {
         P_0205 CUT = new P_0205();
 
-        boolean result  = CUT.isIsomorphic2(s, t);
+        boolean result = CUT.isIsomorphic2(s, t);
 
         Assertions.assertEquals(expected, result);
     }

@@ -20,7 +20,7 @@ public class P_0169 {
 
         int currMajNum = nums[0];
         int counter = 1;
-        for (int i = 1; i <nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             if (nums[i] == currMajNum) {
                 counter++;
             } else {
@@ -47,7 +47,7 @@ public class P_0169 {
 
         Map<Integer, Integer> counts = new HashMap<>(); // Map of the <Element, CurrentCount>
         for (int num : nums) {
-            counts.put(num, counts.getOrDefault(num, 0) + 1);
+            counts.put(num, counts.getOrDefault(num, 0)+1);
         }
 
         int majorityLength = nums.length/2;

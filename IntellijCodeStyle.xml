@@ -1,0 +1,20 @@
+<code_scheme name="Default" version="173">
+  <JavaCodeStyleSettings>
+    <option name="SPACE_AROUND_ANNOTATION_EQ" value="false" />
+    <option name="JD_KEEP_INVALID_TAGS" value="false" />
+    <option name="JD_KEEP_EMPTY_PARAMETER" value="false" />
+    <option name="JD_KEEP_EMPTY_EXCEPTION" value="false" />
+    <option name="JD_KEEP_EMPTY_RETURN" value="false" />
+  </JavaCodeStyleSettings>
+  <codeStyleSettings language="JAVA">
+    <option name="RIGHT_MARGIN" value="180" />
+    <option name="SPACE_AROUND_ADDITIVE_OPERATORS" value="false" />
+    <option name="SPACE_AROUND_MULTIPLICATIVE_OPERATORS" value="false" />
+    <option name="SPACE_WITHIN_BRACES" value="true" />
+    <option name="KEEP_SIMPLE_BLOCKS_IN_ONE_LINE" value="true" />
+    <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
+    <option name="KEEP_SIMPLE_LAMBDAS_IN_ONE_LINE" value="true" />
+    <option name="KEEP_SIMPLE_CLASSES_IN_ONE_LINE" value="true" />
+    <option name="KEEP_MULTIPLE_EXPRESSIONS_IN_ONE_LINE" value="true" />
+  </codeStyleSettings>
+</code_scheme>

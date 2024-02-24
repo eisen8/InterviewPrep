@@ -24,7 +24,7 @@ public class P_0125_Tests {
     public void isPalindrome_BasicParameters(String s, boolean expected) {
         P_0125 CUT = new P_0125();
 
-        boolean result  = CUT.isPalindrome(s);
+        boolean result = CUT.isPalindrome(s);
 
         Assertions.assertEquals(expected, result);
     }

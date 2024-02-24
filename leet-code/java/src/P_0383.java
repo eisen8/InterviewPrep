@@ -10,7 +10,7 @@ public class P_0383 {
      * decrementing the available count of each character.
      * Time complexity: O(n + m)
      * Space complexity: O(1)
-     *
+     * <p>
      * Notes: Hashing can be slow. Since only english lowercase letters are allowed, it would be faster to use a 26 item array
      * for the counts and use the char to index into the array (i.e. 'a' = 0, 'z' = 25). See below canConstruct2 method.
      */
@@ -23,12 +23,12 @@ public class P_0383 {
 
         // Add mag chars to map
         for (char c : magazine.toCharArray()) {
-            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+            charCounts.put(c, charCounts.getOrDefault(c, 0)+1);
         }
 
         // Verify enough counts for ransom Note
         for (char c : ransomNote.toCharArray()) {
-            int newCount = charCounts.getOrDefault(c, 0) - 1;
+            int newCount = charCounts.getOrDefault(c, 0)-1;
             if (newCount < 0) {
                 return false;
             } else {
@@ -54,13 +54,13 @@ public class P_0383 {
 
         // Add mag chars to map
         for (char c : magazine.toCharArray()) {
-            int index = c - 'a';
+            int index = c-'a';
             charCounts[index] += 1;
         }
 
         // Verify enough counts for ransom Note
         for (char c : ransomNote.toCharArray()) {
-            int index = c - 'a';
+            int index = c-'a';
             int newCount = charCounts[index]-1;
             if (newCount < 0) {
                 return false;

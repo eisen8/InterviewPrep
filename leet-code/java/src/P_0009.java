@@ -15,19 +15,17 @@ public class P_0009 {
         char[] digitArray = String.valueOf(x).toCharArray();
 
         int p1 = 0;
-        int p2 = digitArray.length - 1;
+        int p2 = digitArray.length-1;
 
-        while(p1 < p2) {
-            if (digitArray[p1] != digitArray[p2]) {
-                return false;
-            }
-
+        while (p1 < p2) {
+            if (digitArray[p1] != digitArray[p2]) { return false; }
             p1++;
             p2--;
         }
 
         return true;
     }
+
     /**
      * Same as above but uses a List of Integers instead of a char array
      * Time complexity: O(n)
@@ -38,12 +36,10 @@ public class P_0009 {
         List<Integer> digitList = toDigitArray(x);
 
         int p1 = 0;
-        int p2 = digitList.size() - 1;
+        int p2 = digitList.size()-1;
 
-        while(p1 < p2) {
-            if (!digitList.get(p1).equals(digitList.get(p2))) {
-                return false;
-            }
+        while (p1 < p2) {
+            if (!digitList.get(p1).equals(digitList.get(p2))) { return false; }
 
             p1++;
             p2--;
@@ -60,7 +56,7 @@ public class P_0009 {
         int currValue = x;
 
         while (currValue > 0) {
-            digitArray.add(currValue % 10);
+            digitArray.add(currValue%10);
             currValue /= 10;
         }
 
@@ -69,9 +65,7 @@ public class P_0009 {
 }
 
 /*
-Given an integer x, return true if x is a
-palindrome
-, and false otherwise.
+Given an integer x, return true if x is a palindrome, and false otherwise.
 
 
 

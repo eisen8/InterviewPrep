@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.HashMap;
 
 // 62. Unique Paths --- https://leetcode.com/problems/unique-paths/description/
 // See bottom for problem statement
@@ -11,7 +11,7 @@ public class P_0062 {
         if (m <= 0 || n <= 0) { return 0; } // out of bounds: 0 paths
         if (m == 1 && n == 1) { return 1; } // 1x1: 1 path
 
-        return uniquePaths(m-1,n) + uniquePaths(m, n-1);
+        return uniquePaths(m-1, n)+uniquePaths(m, n-1);
     }
 
     /**
@@ -20,18 +20,18 @@ public class P_0062 {
     public int uniquePathsWithCache(int m, int n) {
         if (m <= 0 || n <= 0) { return 0; } // out of bounds, 0 paths
         if (m == 1 && n == 1) { return 1; } // 1x1, 1 path
-        if( cache.get(generateKey(m,n)) != null) {
-            return cache.get(generateKey(m,n));
+        if (cache.get(generateKey(m, n)) != null) {
+            return cache.get(generateKey(m, n));
         }
 
-        int value = uniquePaths(m-1,n) + uniquePaths(m, n-1);
-        cache.put(generateKey(m,n), value);
-        cache.put(generateKey(n,m), value); // put keys both ways since m x n =  n x m
+        int value = uniquePaths(m-1, n)+uniquePaths(m, n-1);
+        cache.put(generateKey(m, n), value);
+        cache.put(generateKey(n, m), value); // put keys both ways since m x n =  n x m
         return value;
     }
 
     private String generateKey(int m, int n) {
-        return m + "," + n;
+        return m+","+n;
     }
 
     private static HashMap<String, Integer> cache;

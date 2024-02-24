@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 // 290. Word Pattern --- https://leetcode.com/problems/word-pattern/description
 // See bottom for problem statement
@@ -33,9 +32,7 @@ public class P_0290 {
                 if (pChar != wordMap.get(word)) { // verify mapping holds
                     return false;
                 }
-            }
-
-            else {
+            } else {
                 pMap.put(pChar, word);
                 wordMap.put(word, pChar);
             }
@@ -49,7 +46,7 @@ public class P_0290 {
      */
     public boolean wordPattern2(String pattern, String s) {
         String[] words = Arrays.stream(s.split(" ")).filter(w -> !w.isEmpty()).toArray(String[]::new);
-        if (pattern.length() != words.length) { return false;}
+        if (pattern.length() != words.length) { return false; }
         if (pattern.length() <= 1) { return true; }
 
         // mappings from pattern characters to words

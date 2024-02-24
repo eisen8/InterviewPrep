@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 // 151. Reverse Words in a String --- https://leetcode.com/problems/reverse-words-in-a-string/description
 // See bottom for problem statement
 public class P_0151 {
@@ -17,7 +13,7 @@ public class P_0151 {
         }
 
         if (!sb.isEmpty()) {
-            sb.delete(sb.length() - 1, sb.length()); // remove last white space
+            sb.delete(sb.length()-1, sb.length()); // remove last white space
         }
         return sb.toString();
     }

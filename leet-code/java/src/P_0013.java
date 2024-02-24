@@ -26,7 +26,7 @@ public class P_0013 {
 
         for (int i = 0; i < s.length(); i++) {
             int value = _romanNumerals.get(s.charAt(i));
-            int nextValue = (i < s.length() - 1) ? _romanNumerals.get(s.charAt(i+1)) : 0;
+            int nextValue = (i < s.length()-1) ? _romanNumerals.get(s.charAt(i+1)) : 0;
 
             if (value < nextValue) {
                 total -= _romanNumerals.get(s.charAt(i));

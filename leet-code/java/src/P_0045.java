@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -16,9 +15,9 @@ public class P_0045 {
         int largestNextJumpIndex = backTrackIndex; // keeps track of the largest jump we can do to the next spot
 
         while (backTrackIndex > 0) {
-            for (int i = 1; backTrackIndex - i >= 0; i++) { // we move i back to see if there are any indexes that can jump to the current backTrackIndex
-                int nextJumpIndex = backTrackIndex - i;
-                if (nums[nextJumpIndex] + nextJumpIndex >= backTrackIndex) { // If true we can jump to the backtrack index from the jumpIndex
+            for (int i = 1; backTrackIndex-i >= 0; i++) { // we move i back to see if there are any indexes that can jump to the current backTrackIndex
+                int nextJumpIndex = backTrackIndex-i;
+                if (nums[nextJumpIndex]+nextJumpIndex >= backTrackIndex) { // If true we can jump to the backtrack index from the jumpIndex
                     largestNextJumpIndex = nextJumpIndex;
                 }
             }
@@ -36,15 +35,15 @@ public class P_0045 {
      * we add it to the memo so we don't have to re-explore it.
      */
     public int jump2(int[] nums) {
-        if (nums.length <= 1) { return 0; };
+        if (nums.length <= 1) { return 0; }
 
         return jumpMemo(nums, 0, new HashMap<>());
     }
 
-    private Integer jumpMemo(int[] nums, int currentIndex, HashMap<Integer,Integer> memo) {
+    private Integer jumpMemo(int[] nums, int currentIndex, HashMap<Integer, Integer> memo) {
         if (memo.containsKey(currentIndex)) { return memo.get(currentIndex); } // already explored this index node
         if (nums[0] >= nums.length-1) { return 1; } // we can jump to the end
-         if (nums[0] <= 0) { return null; } // dead end
+        if (nums[0] <= 0) { return null; } // dead end
 
         Integer minSubJumps = null;
         for (int i = 0; i < nums[0]; i++) {

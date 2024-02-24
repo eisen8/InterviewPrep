@@ -11,8 +11,8 @@ public class P_0169_Tests {
      */
     private static Stream<Arguments> basicTestParameters() {
         return Stream.of( // (nums, expected)
-                Arguments.of(new int[]{3,2,3}, 3), // e1
-                Arguments.of(new int[]{2,2,1,1,1,2,2}, 2), // e2
+                Arguments.of(new int[]{3, 2, 3}, 3), // e1
+                Arguments.of(new int[]{2, 2, 1, 1, 1, 2, 2}, 2), // e2
                 Arguments.of(new int[]{5}, 5), // one element
                 Arguments.of(new int[]{5, 5}, 5) // two duplicate elements
         );
@@ -23,7 +23,7 @@ public class P_0169_Tests {
     public void removeDuplicates_BasicParameters(int[] nums, int expected) {
         P_0169 CUT = new P_0169();
 
-        int result  = CUT.majorityElement(nums);
+        int result = CUT.majorityElement(nums);
 
         Assertions.assertEquals(expected, result);
     }
@@ -33,7 +33,7 @@ public class P_0169_Tests {
     public void removeDuplicates2_BasicParameters(int[] nums, int expected) {
         P_0169 CUT = new P_0169();
 
-        int result  = CUT.majorityElement2(nums);
+        int result = CUT.majorityElement2(nums);
 
         Assertions.assertEquals(expected, result);
     }

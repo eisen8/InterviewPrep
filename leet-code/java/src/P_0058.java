@@ -17,7 +17,7 @@ public class P_0058 {
 
         s = s.trim();
         for (int i = s.length()-1; i > 0; i--) {
-            if(s.charAt(i) == ' ') {
+            if (s.charAt(i) == ' ') {
                 return s.length()-1-i;
             }
         }
@@ -38,6 +38,7 @@ public class P_0058 {
         if (words.length == 0) { return 0; }
         return words[words.length-1].length();
     }
+
     /**
      * Same as above but manually splits the string into words
      * Time complexity: O(n)

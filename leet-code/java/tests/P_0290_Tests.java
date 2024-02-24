@@ -30,7 +30,7 @@ public class P_0290_Tests {
     public void wordPattern_BasicParameters(String pattern, String s, boolean expected) {
         P_0290 CUT = new P_0290();
 
-        boolean result  = CUT.wordPattern(pattern, s);
+        boolean result = CUT.wordPattern(pattern, s);
 
         Assertions.assertEquals(expected, result);
     }
@@ -40,7 +40,7 @@ public class P_0290_Tests {
     public void wordPattern2_BasicParameters(String pattern, String s, boolean expected) {
         P_0290 CUT = new P_0290();
 
-        boolean result  = CUT.wordPattern2(pattern, s);
+        boolean result = CUT.wordPattern2(pattern, s);
 
         Assertions.assertEquals(expected, result);
     }

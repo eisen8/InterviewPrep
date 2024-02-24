@@ -25,7 +25,7 @@ public class P_0020_Tests {
     public void isValid_BasicParameters(String s, boolean expected) {
         P_0020 CUT = new P_0020();
 
-        boolean result  = CUT.isValid(s);
+        boolean result = CUT.isValid(s);
 
         Assertions.assertEquals(expected, result);
     }

@@ -41,8 +41,7 @@ public class P_0027 {
                     startInd++;
                 }
 
-            }
-            else {
+            } else {
                 startInd++;
             }
         }

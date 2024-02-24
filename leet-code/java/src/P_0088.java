@@ -9,9 +9,7 @@ public class P_0088 {
      * Space complexity: O(1)
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        for (int i = 0; i < n; i++) {
-            nums1[m + i] = nums2[i];
-        }
+        if (n >= 0) System.arraycopy(nums2, 0, nums1, m, n);
         Arrays.sort(nums1);
     }
 }

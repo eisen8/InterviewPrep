@@ -12,8 +12,8 @@ public class P_0121 {
 
         int maxProfit = 0;
         for (int i = 0; i < prices.length; i++) {
-            for (int j = i + 1; j < prices.length; j++) {
-                int dayProfit = prices[j] - prices[i];
+            for (int j = i+1; j < prices.length; j++) {
+                int dayProfit = prices[j]-prices[i];
                 if (dayProfit > maxProfit) {
                     maxProfit = dayProfit;
                 }
@@ -37,8 +37,8 @@ public class P_0121 {
         for (int price : prices) {
             if (price < minBuy) {
                 minBuy = price;
-            } else if (price - minBuy > maxProfit) {
-                maxProfit = price - minBuy;
+            } else if (price-minBuy > maxProfit) {
+                maxProfit = price-minBuy;
             }
         }
 

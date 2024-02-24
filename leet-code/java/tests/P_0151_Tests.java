@@ -25,7 +25,7 @@ public class P_0151_Tests {
     public void reverseWords_BasicParameters(String s, String expected) {
         P_0151 CUT = new P_0151();
 
-        String result  = CUT.reverseWords(s);
+        String result = CUT.reverseWords(s);
 
         Assertions.assertEquals(expected, result);
     }

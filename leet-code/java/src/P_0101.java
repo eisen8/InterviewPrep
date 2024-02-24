@@ -1,6 +1,3 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 // 101. Symmetric Tree-- https://leetcode.com/problems/symmetric-tree/description/
 // See bottom for problem statement
 public class P_0101 {

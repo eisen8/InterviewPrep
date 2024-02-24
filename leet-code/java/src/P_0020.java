@@ -6,9 +6,9 @@ import java.util.Stack;
 public class P_0020 {
 
     private static final Map<Character, Character> _openCloseParenthesesMap = Map.of(
-        '(', ')', // open, close
+            '(', ')', // open, close
             '[', ']',
-        '{', '}'
+            '{', '}'
     );
 
     /**
@@ -17,7 +17,7 @@ public class P_0020 {
      * Space complexity: O(n)
      */
     public boolean isValid(String s) {
-        if (s == null || s.length() % 2 == 1) { return false; }
+        if (s == null || s.length()%2 == 1) { return false; }
 
         Stack<Character> stack = new Stack<>();
         for (char c : s.toCharArray()) {

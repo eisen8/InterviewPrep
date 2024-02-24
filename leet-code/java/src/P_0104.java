@@ -11,7 +11,7 @@ public class P_0104 {
     }
 
     private int maxDepth(TreeNode root, int currentDepth) {
-        if (root == null) {return currentDepth;}
+        if (root == null) { return currentDepth; }
         currentDepth++;
 
         return Math.max(maxDepth(root.left, currentDepth), maxDepth(root.right, currentDepth));
@@ -29,7 +29,7 @@ public class P_0104 {
         while (!stack.isEmpty()) {
             StackFrame curr = stack.pop();
             if (curr.node != null) {
-                int currDepth = curr.currentDepth + 1;
+                int currDepth = curr.currentDepth+1;
                 if (currDepth > maxDepth) {
                     maxDepth = currDepth;
                 }
@@ -59,8 +59,10 @@ public class P_0104 {
         int val;
         TreeNode left;
         TreeNode right;
+
         TreeNode() {
         }
+
         TreeNode(int val) {
             this.val = val;
         }

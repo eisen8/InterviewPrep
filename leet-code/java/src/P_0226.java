@@ -1,6 +1,3 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 // 226. Invert Binary Tree --- https://leetcode.com/problems/invert-binary-tree/description
@@ -29,7 +26,7 @@ public class P_0226 {
 
         while (!stack.isEmpty()) {
             TreeNode curr = stack.pop();
-            if (curr !=null) {
+            if (curr != null) {
                 swapChildren(curr);
 
                 // Add children to stack
@@ -51,8 +48,10 @@ public class P_0226 {
         int val;
         TreeNode left;
         TreeNode right;
+
         TreeNode() {
         }
+
         TreeNode(int val) {
             this.val = val;
         }

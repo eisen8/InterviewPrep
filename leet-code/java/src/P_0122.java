@@ -13,8 +13,8 @@ public class P_0122 {
         }
 
         int totalProfit = 0;
-        for (int i = 1; i< prices.length; i++) {
-            int profit = prices[i] - prices[i-1];
+        for (int i = 1; i < prices.length; i++) {
+            int profit = prices[i]-prices[i-1];
             if (profit > 0) {
                 totalProfit += profit; // always buy low and sell high
             }

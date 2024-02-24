@@ -9,7 +9,7 @@ public class P_0066 {
      * Space complexity: O(1)
      */
     public int[] plusOne(int[] digits) {
-        for (int i = digits.length - 1; i >= 0; i--) {
+        for (int i = digits.length-1; i >= 0; i--) {
             if (digits[i] < 9) { // if less than 9 at current digit, add 1 and we are done
                 digits[i]++;
                 return digits;
@@ -19,7 +19,7 @@ public class P_0066 {
 
         // if we made it to the end... all of the other digits were incremented to 0. Now we just need to add 1 to the
         // front. I.e. 99-> 00 -> 100
-        digits = new int[digits.length + 1];
+        digits = new int[digits.length+1];
         digits[0] = 1;
         return digits;
     }

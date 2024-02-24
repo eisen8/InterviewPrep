@@ -25,7 +25,7 @@ public class P_0382_Tests {
     public void isSubsequence_BasicParameters(String s, String t, boolean expected) {
         P_0392 CUT = new P_0392();
 
-        boolean result  = CUT.isSubsequence(s, t);
+        boolean result = CUT.isSubsequence(s, t);
 
         Assertions.assertEquals(expected, result);
     }

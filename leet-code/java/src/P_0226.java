@@ -21,7 +21,7 @@ public class P_0226 {
     }
 
     /**
-     * Same as above but with a stack instead of recursively
+     * Same as above but with a stack instead of recursion
      */
     public TreeNode invertTree2(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();

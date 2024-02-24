@@ -34,4 +34,14 @@ public class P_0290_Tests {
 
         Assertions.assertEquals(expected, result);
     }
+
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void wordPattern2_BasicParameters(String pattern, String s, boolean expected) {
+        P_0290 CUT = new P_0290();
+
+        boolean result  = CUT.wordPattern2(pattern, s);
+
+        Assertions.assertEquals(expected, result);
+    }
 }

@@ -32,4 +32,14 @@ public class P_0205_Tests {
 
         Assertions.assertEquals(expected, result);
     }
+
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void isIsomorphic2_BasicParameters(String s, String t, boolean expected) {
+        P_0205 CUT = new P_0205();
+
+        boolean result  = CUT.isIsomorphic2(s, t);
+
+        Assertions.assertEquals(expected, result);
+    }
 }

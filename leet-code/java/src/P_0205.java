@@ -14,12 +14,8 @@ public class P_0205 {
      * Space complexity: O(n)
      */
     public boolean isIsomorphic(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
-        }
-        if (s.length() <= 1) {
-            return true;
-        }
+        if (s.length() != t.length()) { return false; }
+        if (s.length() <= 1) { return true; }
 
         // mappings from s characters to t characters and vice versa
         Map<Character, Character> sCharMap = new HashMap<>();
@@ -41,6 +37,33 @@ public class P_0205 {
             else {
                 sCharMap.put(sChar, tChar);
                 tCharMap.put(tChar, sChar);
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Same as above but uses 1 map
+     */
+    public boolean isIsomorphic2(String s, String t) {
+        if (s.length() != t.length()) { return false; }
+        if (s.length() <= 1) { return true; }
+
+        // mappings from s characters to t characters
+        Map<Character, Character> sCharMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char sChar = s.charAt(i);
+            char tChar = t.charAt(i);
+            if (sCharMap.containsKey(sChar)) {
+                if (tChar != sCharMap.get(sChar)) { // verify mapping holds
+                    return false;
+                }
+            } else {
+                if (sCharMap.containsValue(tChar)) { return false; } // tChar is already mapped
+
+                sCharMap.put(sChar, tChar);
             }
         }
 

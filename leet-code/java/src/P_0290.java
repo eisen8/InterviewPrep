@@ -15,12 +15,8 @@ public class P_0290 {
      */
     public boolean wordPattern(String pattern, String s) {
         String[] words = Arrays.stream(s.split(" ")).filter(w -> !w.isEmpty()).toArray(String[]::new);
-        if (pattern.length() != words.length) {
-            return false;
-        }
-        if (pattern.length() <= 1) {
-            return true;
-        }
+        if (pattern.length() != words.length) { return false; }
+        if (pattern.length() <= 1) { return true; }
 
         // mappings from pattern characters to words  and vice versa
         Map<Character, String> pMap = new HashMap<>();
@@ -42,6 +38,34 @@ public class P_0290 {
             else {
                 pMap.put(pChar, word);
                 wordMap.put(word, pChar);
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Same as above but uses 1 map
+     */
+    public boolean wordPattern2(String pattern, String s) {
+        String[] words = Arrays.stream(s.split(" ")).filter(w -> !w.isEmpty()).toArray(String[]::new);
+        if (pattern.length() != words.length) { return false;}
+        if (pattern.length() <= 1) { return true; }
+
+        // mappings from pattern characters to words
+        Map<Character, String> pMap = new HashMap<>();
+
+        for (int i = 0; i < pattern.length(); i++) {
+            char pChar = pattern.charAt(i);
+            String word = words[i];
+            if (pMap.containsKey(pChar)) {
+                if (!word.equals(pMap.get(pChar))) { // verify mapping holds
+                    return false;
+                }
+            } else {
+                if (pMap.containsValue(word)) { return false; } // another char is mapped to this word
+
+                pMap.put(pChar, word);
             }
         }
 

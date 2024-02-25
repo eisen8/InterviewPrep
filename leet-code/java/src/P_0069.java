@@ -10,7 +10,7 @@ public class P_0069 {
 
         int i = 1;
         while (true) {
-            int squared = i*i;
+            long squared = (long) i*i;
 
             if (squared == x) {
                 return i;
@@ -32,7 +32,7 @@ public class P_0069 {
         int end = x;
         while (start <= end) {
             int mid = start+(end-start)/2;
-            int squared = mid*mid;
+            long squared = (long) mid*mid;
 
             if (squared == x) {
                 return mid;

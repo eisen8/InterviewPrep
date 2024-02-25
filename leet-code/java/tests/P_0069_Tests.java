@@ -18,7 +18,8 @@ public class P_0069_Tests {
                 Arguments.of(69, 8),
                 Arguments.of(64, 8),
                 Arguments.of(63, 7),
-                Arguments.of(81, 9)
+                Arguments.of(81, 9),
+                Arguments.of(2147395599, 46339)
         );
     }
 

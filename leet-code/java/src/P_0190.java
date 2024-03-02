@@ -1,4 +1,4 @@
-// 6190. Reverse Bits --- https://leetcode.com/problems/reverse-bits/description
+// 190. Reverse Bits --- https://leetcode.com/problems/reverse-bits/description
 // See bottom for problem statement
 public class P_0190 {
 

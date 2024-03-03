@@ -14,6 +14,15 @@ public class ArrayUtils {
     }
 
     /**
+     * Swaps two elements in the array.
+     */
+    public static void swap(int[] array, int index1, int index2) {
+        array[index1] = array[index1]^array[index2]; // a = a xor b
+        array[index2] = array[index1]^array[index2]; // b = (a xor b) xor b = a
+        array[index1] = array[index1]^array[index2]; // a = (a xor b) xor a = b
+    }
+
+    /**
      * Returns the first index of an element in a given array
      */
     public static <T> int firstIndexOf(T[] array, T element) {

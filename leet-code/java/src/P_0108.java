@@ -7,13 +7,13 @@ public class P_0108 {
      * is the mid of the right half of the array. We repeat this process recursively to generate the entire tree.
      */
     public TreeNode sortedArrayToBST(int[] nums) {
-        if (nums.length == 0) return null;
+        if (nums.length == 0) { return null; }
 
         return sortedArrayToBST(nums, 0, nums.length-1);
     }
 
     private TreeNode sortedArrayToBST(int[] nums, int start, int end) {
-        if (start > end) return null;
+        if (start > end) { return null; }
 
         int mid = start+((end-start)/2);
         TreeNode node = new TreeNode(nums[mid]);

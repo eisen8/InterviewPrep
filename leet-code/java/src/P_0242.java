@@ -22,7 +22,7 @@ public class P_0242 {
                 return false;
             }
         }
-        
+
         return true;
     }
 

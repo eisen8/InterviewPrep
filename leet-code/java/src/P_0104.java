@@ -1,3 +1,5 @@
+import common.TreeNode;
+
 import java.util.Stack;
 
 // 104. Maximum Depth of Binary Tree --- https://leetcode.com/problems/maximum-depth-of-binary-tree/description
@@ -52,26 +54,6 @@ public class P_0104 {
             this.currentDepth = currentDepth;
         }
 
-    }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }
 

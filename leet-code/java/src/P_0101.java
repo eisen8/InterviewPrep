@@ -1,3 +1,5 @@
+import common.TreeNode;
+
 // 101. Symmetric Tree-- https://leetcode.com/problems/symmetric-tree/description/
 // See bottom for problem statement
 public class P_0101 {
@@ -17,27 +19,6 @@ public class P_0101 {
 
         return isSymmetric(left.right, right.left) && isSymmetric(left.left, right.right);
     }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
 }
 
 /*

@@ -1,3 +1,5 @@
+import common.TreeNode;
+
 import java.util.Stack;
 
 // 226. Invert Binary Tree --- https://leetcode.com/problems/invert-binary-tree/description
@@ -42,25 +44,6 @@ public class P_0226 {
         TreeNode temp = node.left; // swap
         node.left = node.right;
         node.right = temp;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }
 

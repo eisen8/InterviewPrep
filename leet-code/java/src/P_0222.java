@@ -1,3 +1,5 @@
+import common.TreeNode;
+
 // 222. Count Complete Tree Nodes --- https://leetcode.com/problems/count-complete-tree-nodes/description
 // See bottom for problem statement
 public class P_0222 {
@@ -45,23 +47,6 @@ public class P_0222 {
         }
 
         return countNodes2(root.left)+countNodes2(root.right)+1; // Recursively sum on the left and right children.
-    }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() { }
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }
 

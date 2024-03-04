@@ -1,3 +1,5 @@
+import common.TreeNode;
+
 // 112. Path Sum --- https://leetcode.com/problems/path-sum/description
 // See bottom for problem statement
 public class P_0112 {
@@ -7,23 +9,6 @@ public class P_0112 {
         if (root == null) { return false; }
         if (root.left == null && root.right == null) { return root.val == targetSum; }
         return hasPathSum(root.left, targetSum-root.val) || hasPathSum(root.right, targetSum-root.val);
-    }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() { }
-
-        TreeNode(int val) { this.val = val; }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
     }
 }
 

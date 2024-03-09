@@ -1,13 +1,15 @@
 package data_structures.lists;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArrayListTests extends IListBaseTests {
-
-    public ArrayListTests() {
-        super(new ArrayList<>()); // Runs all the base class unit tests
+    @BeforeEach
+    @Override
+    void initCUT() {
+        CUT = new ArrayList<>();
     }
 
     // ---- Insert any specific unit tests below if needed ----

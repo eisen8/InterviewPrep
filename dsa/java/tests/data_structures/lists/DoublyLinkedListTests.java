@@ -1,10 +1,13 @@
 package data_structures.lists;
 
-public class DoublyLinkedListTests extends IListBaseTests {
-    public DoublyLinkedListTests() {
-        super(new DoublyLinkedList<>()); // Runs all the base class unit tests
-    }
+import org.junit.jupiter.api.BeforeEach;
 
+public class DoublyLinkedListTests extends IListBaseTests {
+    @BeforeEach
+    @Override
+    void initCUT() {
+        CUT = new DoublyLinkedList<>();
+    }
 
     // ---- Insert any specific unit tests below if needed ----
 }

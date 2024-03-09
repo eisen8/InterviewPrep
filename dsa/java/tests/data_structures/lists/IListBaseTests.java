@@ -1,7 +1,7 @@
 package data_structures.lists;
 
 import data_structures.utilities.ArrayUtils;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,20 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * A set of base tests for all classes that implement IList
  */
 public abstract class IListBaseTests {
-    private static IList<Integer> CUT;
+    protected static IList<Integer> CUT; // Class Under Test
 
-    public IListBaseTests(IList<Integer> list) {
-        if (list == null) { throw new IllegalArgumentException("list cannot be null"); }
-
-        CUT = list;
-    }
-
-    @BeforeAll
-    public static void init() {
-        if (CUT != null) {
-            CUT.clear();
-        }
-    }
+    /**
+     * Inheriting class must initialize the CUT (class under test) to its specific instance BeforeEach test
+     */
+    @BeforeEach
+    abstract void initCUT();
 
     /**
      * Parameters for add basic tests.

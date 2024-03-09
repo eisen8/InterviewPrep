@@ -7,6 +7,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -97,6 +100,23 @@ public abstract class IListBaseTests {
 
     @ParameterizedTest
     @MethodSource("basicAddParameters")
+    public void remove_indexFromMiddle_BasicTests(Integer[] numbers) {
+        ArrayList<Integer> numberList = new ArrayList<>(Arrays.asList(numbers));
+
+        for (int i = 0; i < numbers.length; i++) {
+            CUT.add(numbers[i]);
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            int middle = CUT.size()/2;
+            Integer removed = CUT.remove(middle);
+            assertEquals(numberList.remove(middle), removed);
+            assertEquals(numbers.length-1-i, CUT.size());
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicAddParameters")
     public void remove_elementFromStart_BasicTests(Integer[] numbers) {
         for (int i = 0; i < numbers.length; i++) {
             CUT.add(numbers[i]);
@@ -118,6 +138,23 @@ public abstract class IListBaseTests {
 
         for (int i = 0; i < numbers.length; i++) {
             boolean removed = CUT.remove(numbers[numbers.length-1-i]);
+            assertTrue(removed);
+            assertEquals(numbers.length-1-i, CUT.size());
+        }
+    }
+
+    @ParameterizedTest
+    @MethodSource("basicAddParameters")
+    public void remove_elementFromMiddle_BasicTests(Integer[] numbers) {
+        ArrayList<Integer> numberList = new ArrayList<>(Arrays.asList(numbers));
+
+        for (int i = 0; i < numbers.length; i++) {
+            CUT.add(numbers[i]);
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            int middle = CUT.size()/2;
+            boolean removed = CUT.remove(numberList.remove(middle));
             assertTrue(removed);
             assertEquals(numbers.length-1-i, CUT.size());
         }
@@ -161,6 +198,21 @@ public abstract class IListBaseTests {
     }
 
     @Test
+    public void contains_ElementIsRemoved_ReturnsFalse() {
+        CUT.add(0);
+        CUT.add(1);
+        CUT.add(2);
+        CUT.add(3);
+        CUT.add(4);
+
+        CUT.remove(4);
+        boolean contains = CUT.contains(4);
+
+        assertFalse(contains);
+    }
+
+
+    @Test
     public void contains_EmptyList_ReturnsFalse() {
         assertFalse(CUT.contains(0));
     }
@@ -174,11 +226,35 @@ public abstract class IListBaseTests {
     }
 
     @Test
+    public void indexOf_AfterClearList_ReturnsFalse() {
+        CUT.add(0);
+        CUT.clear();
+
+        int index = CUT.indexOf(0);
+
+        assertEquals(-1, index);
+    }
+
+    @Test
     public void indexOf_MissingElement_ReturnsNegOne() {
         CUT.add(1);
         CUT.add(2);
         CUT.add(3);
 
+        int index = CUT.indexOf(4);
+
+        assertEquals(-1, index);
+    }
+
+    @Test
+    public void indexOf_ElementIsRemoved_ReturnsNotFound() {
+        CUT.add(0);
+        CUT.add(1);
+        CUT.add(2);
+        CUT.add(3);
+        CUT.add(4);
+
+        CUT.remove(4);
         int index = CUT.indexOf(4);
 
         assertEquals(-1, index);

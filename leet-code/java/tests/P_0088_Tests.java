@@ -1,62 +1,49 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class P_0088_Tests {
-    @Test
-    public void merge_e1() {
-        P_0088 CUT = new P_0088();
-        int[] n1 = {1, 2, 3, 0, 0, 0};
-        int[] n2 = {2, 5, 6};
-        int[] expected = {1, 2, 2, 3, 5, 6};
-
-        CUT.merge(n1, 3, n2, 3);
-
-        Assertions.assertArrayEquals(expected, n1);
+    /**
+     * Parameters for basic tests.
+     */
+    private static Stream<Arguments> basicTestParameters() {
+        return Stream.of( // (nums1, n, nums2, expected)
+                Arguments.of(new int[]{1, 2, 3, 0, 0, 0}, 3, new int[]{2, 5, 6}, new int[]{1, 2, 2, 3, 5, 6}), // e1
+                Arguments.of(new int[]{1}, 1, new int[]{}, new int[]{1}), // e2
+                Arguments.of(new int[]{0}, 0, new int[]{1}, new int[]{1}) // e3
+        );
     }
 
-    @Test
-    public void merge_e2() {
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void merge_BasicParameters(int[] nums1, int n, int[] nums2, int[] expected) {
         P_0088 CUT = new P_0088();
-        int[] n1 = {1};
-        int[] n2 = {};
-        int[] expected = {1};
 
-        CUT.merge(n1, 1, n2, 0);
+        CUT.merge(nums1, n, nums2, nums2.length);
 
-        Assertions.assertArrayEquals(expected, n1);
+        Assertions.assertArrayEquals(expected, nums1);
     }
 
-    @Test
-    public void merge_e3() {
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void merge2_BasicParameters(int[] nums1, int n, int[] nums2, int[] expected) {
         P_0088 CUT = new P_0088();
-        int[] n1 = {0};
-        int[] n2 = {1};
-        int[] expected = {1};
 
-        CUT.merge(n1, 0, n2, 1);
+        CUT.merge2(nums1, n, nums2, nums2.length);
 
-        Assertions.assertArrayEquals(expected, n1);
+        Assertions.assertArrayEquals(expected, nums1);
     }
 
-/*  Example 1:
+    @ParameterizedTest
+    @MethodSource("basicTestParameters")
+    public void merge3_BasicParameters(int[] nums1, int n, int[] nums2, int[] expected) {
+        P_0088 CUT = new P_0088();
 
-    Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
-    Output: [1,2,2,3,5,6]
-    Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
-    The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+        CUT.merge3(nums1, n, nums2, nums2.length);
 
-    Example 2:
-
-    Input: nums1 = [1], m = 1, nums2 = [], n = 0
-    Output: [1]
-    Explanation: The arrays we are merging are [1] and [].
-    The result of the merge is [1].
-
-    Example 3:
-
-    Input: nums1 = [0], m = 0, nums2 = [1], n = 1
-    Output: [1]
-    Explanation: The arrays we are merging are [] and [1].
-    The result of the merge is [1].
-    Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.*/
+        Assertions.assertArrayEquals(expected, nums1);
+    }
 }

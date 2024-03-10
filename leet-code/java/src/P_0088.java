@@ -5,12 +5,70 @@ import java.util.Arrays;
 public class P_0088 {
     /**
      * Simply copy nums2 to the end of nums1 and re-sort.
-     * Time complexity: O((m+n)log(m+n))
-     * Space complexity: O(1)
+     * Time complexity: (m+n)*log(m+n)
+     * Space complexity: 1
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (n >= 0) System.arraycopy(nums2, 0, nums1, m, n);
+        if (n >= 0) { System.arraycopy(nums2, 0, nums1, m, n); }
         Arrays.sort(nums1);
+    }
+
+    /**
+     * Two pointers method copying into a buffer. Then copy the buffer back into nums1.
+     * Time complexity: n+m
+     * Space complexity: n+m
+     */
+    public void merge2(int[] nums1, int m, int[] nums2, int n) {
+        int p1 = 0;
+        int p2 = 0;
+        int[] buffer = new int[m+n];
+
+        // Copy into buffer.
+        for (int i = 0; i < m+n; i++) {
+            if (p1 == m) { // p1 is finished... rest come from p2
+                buffer[i] = nums2[p2];
+                p2++;
+            } else if (p2 == n) { // p2 is finished... rest come from p1
+                buffer[i] = nums1[p1];
+                p1++;
+            } else if (nums1[p1] <= nums2[p2]) {
+                buffer[i] = nums1[p1];
+                p1++;
+            } else {
+                buffer[i] = nums2[p2];
+                p2++;
+            }
+        }
+
+        // Copy buffer into nums1
+        System.arraycopy(buffer, 0, nums1, 0, m+n);
+    }
+
+    /**
+     * Two pointer methods but inline. Use two pointers at the end of both m and nums2 to choose the largest value to put at the end of nums1. Work through both
+     * sub arrays.
+     * Time complexity: n+m
+     * Space complexity: 1
+     */
+    public void merge3(int[] nums1, int m, int[] nums2, int n) {
+        int p1 = m-1; // pointer to end of nums1
+        int p2 = n-1; // pointer to end of nums2
+
+        for (int i = m+n-1; i >= 0; i--) {
+            if (p2 == -1) { // p2 is finished... rest come from p1
+                nums1[i] = nums1[p1];
+                p1--;
+            } else if (p1 == -1) { // p1 is finished... rest come from p2
+                nums1[i] = nums2[p2];
+                p2--;
+            } else if (nums1[p1] >= nums2[p2]) { // p1 is larger
+                nums1[i] = nums1[p1];
+                p1--;
+            } else { // p2 is larger
+                nums1[i] = nums2[p2];
+                p2--;
+            }
+        }
     }
 }
 

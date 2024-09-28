@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class P_0088 {
     /**
      * Simply copy nums2 to the end of nums1 and re-sort.
-     * Time complexity: (m+n)*log(m+n)
-     * Space complexity: 1
+     * Time complexity: O((m+n)*log(m+n))
+     * Space complexity: O(1)
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (n >= 0) { System.arraycopy(nums2, 0, nums1, m, n); }
@@ -15,8 +15,8 @@ public class P_0088 {
 
     /**
      * Two pointers method copying into a buffer. Then copy the buffer back into nums1.
-     * Time complexity: n+m
-     * Space complexity: n+m
+     * Time complexity: O(n+m)
+     * Space complexity: O(n+m)
      */
     public void merge2(int[] nums1, int m, int[] nums2, int n) {
         int p1 = 0;
@@ -47,8 +47,8 @@ public class P_0088 {
     /**
      * Two pointer methods but inline. Use two pointers at the end of both m and nums2 to choose the largest value to put at the end of nums1. Work through both
      * sub arrays.
-     * Time complexity: n+m
-     * Space complexity: 1
+     * Time complexity: O(n+m)
+     * Space complexity: O(1)
      */
     public void merge3(int[] nums1, int m, int[] nums2, int n) {
         int p1 = m-1; // pointer to end of nums1
